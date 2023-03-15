@@ -1,5 +1,5 @@
 import React from "react";
-import { GitHubBanner, Refine } from "@refinedev/core";
+import { Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import {
   Layout,
@@ -33,7 +33,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 
   return (
     <>
-      <GitHubBanner />
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <CssBaseline />

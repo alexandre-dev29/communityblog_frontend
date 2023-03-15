@@ -24,6 +24,7 @@
     "@refinedev/nextjs-router": "^5.0.0",
     "@refinedev/react-hook-form": "^4.0.0",
     "@refinedev/simple-rest": "^4.0.0",
+    "@tailwindcss/typography": "^0.5.9",
     "next": "^13.0.6",
     "nookies": "^2.5.2",
     "react": "^18.0.0",
