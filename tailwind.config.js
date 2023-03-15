@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   mode: "jit",
+  important: true,
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -202,6 +203,9 @@ module.exports = {
           },
         },
       }),
+      colors: {
+        myPrimary: "rgb(16,129,232)",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

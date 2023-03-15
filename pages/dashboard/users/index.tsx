@@ -1,9 +1,12 @@
-import { MuiListInferencer } from "@refinedev/inferencer/mui";
 import { GetServerSideProps } from "next";
 import { authProvider } from "src/utils/authProvider";
 
-export default function CategoryList() {
-  return <MuiListInferencer />;
+export default function ProductList() {
+  return (
+    <p className={"bg-myPrimary"} style={{ color: "var(--myPrimary)" }}>
+      users
+    </p>
+  );
 }
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {

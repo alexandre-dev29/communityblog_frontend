@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import { useGetIdentity } from "@refinedev/core";
 import {
   AppBar,
-  IconButton,
   Avatar,
+  IconButton,
   Stack,
   Toolbar,
   Typography,
 } from "@mui/material";
+
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 
 import { ColorModeContext } from "@contexts";

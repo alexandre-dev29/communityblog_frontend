@@ -7,7 +7,7 @@ type LoginFormValues = {
   email: string;
   password: string;
 };
-export default function Login() {
+const LoginPage = () => {
   const { mutate: login, isLoading } = useLogin<LoginFormValues>({});
   const { register, handleSubmit, reset } = useForm<LoginFormValues>();
   const onSubmit: SubmitHandler<LoginFormValues> = async ({
@@ -66,6 +66,7 @@ export default function Login() {
       </div>
     </section>
   );
-}
+};
 
-Login.noLayout = true;
+LoginPage.noLayout = true;
+export default LoginPage;
