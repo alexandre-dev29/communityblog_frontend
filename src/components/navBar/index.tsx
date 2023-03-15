@@ -10,7 +10,7 @@ const NavBar = ({ sidebarWidth, navBarHeight }: NavSideBarProps) => {
   return (
     <div
       className={`shadow-md bg-white min-h-[40px] flex items-center `}
-      style={{ height: `${navBarHeight}vh` }}
+      style={{ height: `${navBarHeight}vh`, maxHeight: "60px" }}
     >
       <div
         className={
