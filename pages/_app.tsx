@@ -1,32 +1,22 @@
 import React from "react";
-import { AppProps } from "next/app";
-import type { NextPage } from "next";
-import { Refine, GitHubBanner } from "@refinedev/core";
+import { GitHubBanner, Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import {
+  Layout,
   notificationProvider,
   RefineSnackbarProvider,
-  Layout,
 } from "@refinedev/mui";
-import routerProvider, {
-  UnsavedChangesNotifier,
-} from "@refinedev/nextjs-router";
+import routerProvider from "@refinedev/nextjs-router";
+import "./global.css";
 
-import dataProvider from "@refinedev/simple-rest";
 import { CssBaseline, GlobalStyles } from "@mui/material";
 import { ColorModeContextProvider } from "@contexts";
 import { Header } from "@components/header";
-import { authProvider } from "src/authProvider";
+import { authProvider } from "src/utils/authProvider";
+import { AppPropsWithLayout } from "../src/types/types";
+import { dataProvider } from "../src/utils";
 
 const API_URL = "https://api.fake-rest.refine.dev";
-
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  noLayout?: boolean;
-};
-
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   const renderComponent = () => {
@@ -79,7 +69,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
             >
               {renderComponent()}
               <RefineKbar />
-              <UnsavedChangesNotifier />
             </Refine>
           </RefineSnackbarProvider>
         </ColorModeContextProvider>

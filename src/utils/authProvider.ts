@@ -1,28 +1,22 @@
 import { AuthBindings } from "@refinedev/core";
 import nookies from "nookies";
+import { axiosInstance } from "./axiosInstance";
+import { API_URL } from "../constants/constants";
+import { IAuthResponse, ResponseTypeEnum } from "../interfaces/uiTypes";
 
-const mockUsers = [
-  {
-    name: "John Doe",
-    email: "johndoe@mail.com",
-    roles: ["admin"],
-    avatar: "https://i.pravatar.cc/150?img=1",
-  },
-  {
-    name: "Jane Doe",
-    email: "janedoe@mail.com",
-    roles: ["editor"],
-    avatar: "https://i.pravatar.cc/150?img=1",
-  },
-];
+const httpClient = axiosInstance;
 
 export const authProvider: AuthBindings = {
-  login: async ({ email, username, password, remember }) => {
-    // Suppose we actually send a request to the back end here.
-    const user = mockUsers[0];
-
-    if (user) {
-      nookies.set(null, "auth", JSON.stringify(user), {
+  login: async ({ email, password }) => {
+    const { data } = await httpClient.post<IAuthResponse>(
+      `${API_URL}/users/loginUser`,
+      {
+        email,
+        password,
+      }
+    );
+    if (data.responseType === ResponseTypeEnum.SUCCESS) {
+      nookies.set(null, "auth", JSON.stringify(data.data), {
         maxAge: 30 * 24 * 60 * 60,
         path: "/",
       });

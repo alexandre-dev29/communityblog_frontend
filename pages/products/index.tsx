@@ -1,6 +1,6 @@
 import { MuiListInferencer } from "@refinedev/inferencer/mui";
 import { GetServerSideProps } from "next";
-import { authProvider } from "src/authProvider";
+import { authProvider } from "src/utils/authProvider";
 
 export default function ProductList() {
   return <MuiListInferencer />;
