@@ -77,14 +77,20 @@ const PropertyReferals = () => {
       display={"flex"}
       borderRadius={"15px"}
       gap={4}
-      bgcolor={"#fcfcfc"}
+      bgcolor={"#fff"}
+      className={"transition-all duration-500 shadow-sm hover:shadow-md"}
     >
       <Typography fontSize={18} fontWeight={600} color={"#11142d"}>
         Top Categories
       </Typography>
       <Stack my={"20px"} direction={"column"} gap={4}>
         {propertyReferralsInfo.map(({ percentage, title, color }, index) => (
-          <ProgressBar title={title} percentage={percentage} color={color} />
+          <ProgressBar
+            key={index}
+            title={title}
+            percentage={percentage}
+            color={color}
+          />
         ))}
       </Stack>
     </Box>

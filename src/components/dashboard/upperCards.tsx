@@ -16,7 +16,7 @@ const UpperCards = ({
   return (
     <div
       className={
-        "bg-white p-4 shadow-sm transition-all duration-500 hover:shadow-md flex rounded-md"
+        "bg-white p-4 shadow-sm transition-all duration-500 hover:shadow-md flex rounded-md "
       }
     >
       <div

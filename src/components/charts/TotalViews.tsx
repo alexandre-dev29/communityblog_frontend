@@ -16,7 +16,8 @@ const TotalRevenue = () => {
       id={"chart"}
       display={"flex"}
       borderRadius={"15px"}
-      bgcolor={"#fcfcfc"}
+      bgcolor={"#fff"}
+      className={"transition-all duration-500 shadow-sm hover:shadow-md"}
     >
       <Typography fontSize={18} fontWeight={600} color={"#11142d"}>
         Total Views last 8 months

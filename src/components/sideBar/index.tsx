@@ -18,8 +18,9 @@ export const Sidebar = ({ sidebarWidth, navBarHeight }: NavSideBarProps) => {
         style={{
           borderTop: "1px solid #D3DAE6",
           height: `100%`,
-          left: 0,
-          position: "fixed",
+          left: 100,
+          top: "50px",
+          position: "sticky",
           width: `${sidebarWidth - 1}px`,
         }}
       >

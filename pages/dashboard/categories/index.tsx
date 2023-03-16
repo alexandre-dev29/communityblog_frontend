@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import { authProvider } from "src/utils/authProvider";
 
 export default function CategoryList() {
-  return <p>Category list</p>;
+  return <h1>dsfsdf</h1>;
 }
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {

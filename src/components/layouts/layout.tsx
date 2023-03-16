@@ -22,7 +22,7 @@ export const MyLayout = ({ children }: { children: React.ReactNode }) => {
         <div className={"w-full flex justify-center"}>
           <Sidebar sidebarWidth={sideBardWidth} navBarHeight={navBarHeight} />
           <main
-            className={"p-4 h-full w-[96vw] ml-4"}
+            className={"p-4 h-full w-[96vw]"}
             style={{ height: `${100 - navBarHeight}vh` }}
           >
             {children}
