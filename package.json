@@ -26,11 +26,13 @@
     "@refinedev/react-hook-form": "^4.0.0",
     "@refinedev/simple-rest": "^4.0.0",
     "@tailwindcss/typography": "^0.5.9",
+    "apexcharts": "^3.37.1",
     "iconoir-react": "^6.4.0",
     "next": "^13.0.6",
     "nookies": "^2.5.2",
     "nprogress": "^0.2.0",
     "react": "^18.0.0",
+    "react-apexcharts": "^1.4.0",
     "react-dom": "^18.0.0",
     "zustand": "^4.3.6"
   },

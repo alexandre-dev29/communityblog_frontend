@@ -10,15 +10,19 @@ export const MyLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div
       className={oxygen.className}
-      style={{ height: "100vh", width: "100%", backgroundColor: "#fafbfd" }}
+      style={{
+        height: "100vh",
+        width: "100%",
+        backgroundColor: "rgb(248,248,248)",
+      }}
     >
       <div className={"flex flex-col"}>
         <NavBar sidebarWidth={sideBardWidth} navBarHeight={navBarHeight} />
 
-        <div className={"w-full flex"}>
+        <div className={"w-full flex justify-center"}>
           <Sidebar sidebarWidth={sideBardWidth} navBarHeight={navBarHeight} />
           <main
-            className={"p-4 w-full h-full "}
+            className={"p-4 h-full w-[96vw] ml-4"}
             style={{ height: `${100 - navBarHeight}vh` }}
           >
             {children}
