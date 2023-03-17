@@ -8,6 +8,7 @@ import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import Router from "next/router";
 import RefineConfig from "../config/refineConfig";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 const InterFont = Montserrat({
   subsets: ["latin"],
@@ -33,7 +34,13 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 
   return (
     <div className={`${InterFont.className}`}>
-      <RefineConfig>{renderComponent()}</RefineConfig>
+      <NextThemesProvider
+        attribute={"class"}
+        themes={["light", "dark"]}
+        defaultTheme={"dark"}
+      >
+        <RefineConfig>{renderComponent()}</RefineConfig>
+      </NextThemesProvider>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Table } from "flowbite-react";
 
 const ArticleTable = () => {
   const datas: Array<{
@@ -78,56 +79,64 @@ const ArticleTable = () => {
     },
   ];
   return (
-    <div className={"w-full"}>
+    <div className={"w-full pr-8"}>
       <h4 className={"font-extrabold text-gray-800 "}>Recent Article</h4>
-      <div id="tableHeader " className={"flex mt-4"}>
-        <p className={"text-gray-500 font-bold px-1"}>No</p>
-        <div className={"grid grid-cols-8 gap-8 ml-6 w-full"}>
-          <p className={"col-span-3 text-gray-500 font-bold "}>Article Title</p>
-          <p className={" text-gray-500 font-bold"}>Post Date</p>
-          <p className={" text-gray-500 font-bold text-center"}>Category</p>
-          <p className={" text-gray-500 font-bold"}>Likes</p>
-          <p className={" text-gray-500 font-bold"}>shared</p>
-          <p className={"text-gray-500 font-bold "}>Viewers</p>
-        </div>
-      </div>
-      {datas.map((value, index) => (
-        <div
-          className={`flex items-center ${index === 0 ? "mt-6" : "mt-5"} `}
-          key={index}
-        >
-          <p className={"px-2 rounded-md text-center bg-blue-500 text-white"}>
-            {index + 1}
-          </p>
-          <div className={"grid grid-cols-8 gap-8 ml-6 w-full items-center"}>
-            <div className={"col-span-3 flex items-center gap-4"}>
-              <Image
-                src={value.articleImage}
-                alt={"unsplash images"}
-                width={100}
-                height={100}
-                className={"rounded-lg shadow-lg"}
-              />
-              <Link
-                href={`/article/${value.articleSlug}`}
-                className={"text-gray-500 font-bold"}
-                target={"_blank"}
-              >
-                {value.articleTitle}
-              </Link>
-            </div>
-            <p className={"text-gray-500 "}>{value.postDate}</p>
-            <p
-              className={`inline px-2 py-2 justify-self-center text-white text-center rounded-lg ${value.categoryColor}`}
+      <Table hoverable={true} className={"mt-4"}>
+        <Table.Head>
+          <Table.HeadCell className="!p-4">No</Table.HeadCell>
+          <Table.HeadCell className={"text-left"}>Article Title</Table.HeadCell>
+          <Table.HeadCell>Author</Table.HeadCell>
+          <Table.HeadCell>Post Date</Table.HeadCell>
+          <Table.HeadCell>Category</Table.HeadCell>
+          <Table.HeadCell>Likes</Table.HeadCell>
+          <Table.HeadCell>shared</Table.HeadCell>
+          <Table.HeadCell>Viewers</Table.HeadCell>
+        </Table.Head>
+        <Table.Body className="divide-y">
+          {datas.map((value, index) => (
+            <Table.Row
+              className="bg-white dark:border-gray-700 dark:bg-gray-800"
+              key={index}
             >
-              {value.category}
-            </p>
-            <p className={"text-gray-500 font-bold"}>{value.like}</p>
-            <p className={"text-gray-500 font-bold"}>{value.shared}</p>
-            <p className={"text-gray-500 font-bold"}>{value.viewers}</p>
-          </div>
-        </div>
-      ))}
+              <Table.Cell className="!p-6 ">{index}</Table.Cell>
+              <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                <div className={"col-span-3 flex items-center gap-4"}>
+                  <Image
+                    src={value.articleImage}
+                    alt={"unsplash images"}
+                    width={60}
+                    height={60}
+                    className={"rounded-lg shadow-lg"}
+                    style={{ width: "auto", height: "auto" }}
+                  />
+                  <Link
+                    href={`/article/${value.articleSlug}`}
+                    className={"text-gray-500 font-bold"}
+                    target={"_blank"}
+                  >
+                    {value.articleTitle}
+                  </Link>
+                </div>
+              </Table.Cell>
+              <Table.Cell>
+                <div className={"flex items-center"}>
+                  <img
+                    src={value.articleImage}
+                    alt={"unsplash images"}
+                    className={"rounded-full shadow-lg  h-[40px] w-[40px]"}
+                  />
+                  <p className={"ml-2 font-bold"}>Alexandre</p>
+                </div>
+              </Table.Cell>
+              <Table.Cell>{value.postDate}</Table.Cell>
+              <Table.Cell>{value.category}</Table.Cell>
+              <Table.Cell>{value.like}</Table.Cell>
+              <Table.Cell>{value.shared}</Table.Cell>
+              <Table.Cell>{value.viewers}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
     </div>
   );
 };

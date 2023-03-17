@@ -17,8 +17,8 @@ export const Sidebar = ({ sidebarWidth, navBarHeight }: NavSideBarProps) => {
         className={`shadow-md bg-white z-40`}
         style={{
           borderTop: "1px solid #D3DAE6",
-          height: `100%`,
-          left: 100,
+          height: `94vh`,
+          left: 0,
           top: "50px",
           position: "sticky",
           width: `${sidebarWidth - 1}px`,
