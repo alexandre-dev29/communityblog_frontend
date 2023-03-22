@@ -10,6 +10,10 @@ export const accessControlProvider: AccessControlProvider = {
       if (resource == "categories" && parsedUser.role == "Editor") {
         return Promise.resolve({ can: false, reason: "Unauthorized" });
       }
+      if (resource == "users" && parsedUser.role == "Editor") {
+        return Promise.resolve({ can: false, reason: "Unauthorized" });
+      }
+
       return Promise.resolve({ can: true });
     } else {
       return Promise.resolve({ can: false, reason: "Unauthorized" });

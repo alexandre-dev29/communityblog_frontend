@@ -1,5 +1,5 @@
 import React from "react";
-import { IResourceComponentsProps } from "@refinedev/core";
+import { GetListResponse } from "@refinedev/core";
 import { ICategory } from "../../../src/interfaces/categories";
 import { Image, Space, Table } from "antd";
 import {
@@ -10,10 +10,17 @@ import {
   TextField,
   useTable,
 } from "@refinedev/antd";
+import { GetServerSideProps } from "next";
+import { authProvider, axiosInstance, dataProvider } from "../../../src/utils";
+import { parseTableParams } from "@refinedev/nextjs-router";
+import { API_URL } from "../../../src/constants/constants";
 
-const CategoryList: React.FC<IResourceComponentsProps> = () => {
+const CategoryList: React.FC<{ initialData: GetListResponse<ICategory> }> = ({
+  initialData,
+}) => {
   const { tableProps, sorters } = useTable<ICategory>({
     pagination: { mode: "client" },
+    queryOptions: { initialData: initialData },
   });
 
   return (
@@ -80,3 +87,36 @@ const CategoryList: React.FC<IResourceComponentsProps> = () => {
 };
 
 export default CategoryList;
+
+export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
+  const { authenticated, redirectTo } = await authProvider.check(context);
+
+  if (!authenticated) {
+    return {
+      props: {},
+      redirect: {
+        destination: redirectTo,
+        permanent: false,
+      },
+    };
+  }
+  const { pagination, filters, sorters } = parseTableParams(
+    context.resolvedUrl?.split("?")[1] ?? ""
+  );
+
+  const data = await dataProvider(
+    API_URL,
+    axiosInstance,
+    context.req.headers.cookie
+  ).getList({
+    resource: "categories",
+    filters,
+    pagination,
+    sorters,
+  });
+  console.log(data);
+
+  return {
+    props: { initialData: data },
+  };
+};

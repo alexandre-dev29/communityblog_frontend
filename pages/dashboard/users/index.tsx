@@ -28,7 +28,7 @@ export const UsersList: React.FC<{ initialData: GetListResponse<IUser> }> = ({
       </div>
       <div
         className={
-          "grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  mt-4"
+          "grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  mt-4 gap-4"
         }
       >
         {initialData.data.map((value) => (
