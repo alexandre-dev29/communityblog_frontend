@@ -27,7 +27,7 @@ const UserListCard = ({ userInformation }: { userInformation: IUser }) => {
           {fullName}
         </h5>
         <p className={"flex flex-col items-center"}>
-          <span className="text-sm text-gray-500 text-md dark:text-gray-400">
+          <span className="text-sm text-gray-500 text-md dark:text-gray-400 text-center">
             {userTitle}
           </span>
           <span className="text-sm text-gray-500 text-md dark:text-gray-400 text-myPrimary">

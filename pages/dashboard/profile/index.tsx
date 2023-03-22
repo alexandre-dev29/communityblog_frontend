@@ -127,6 +127,7 @@ const ProfilePage: React.FC<{ initialData: GetOneResponse<IUser> }> = ({
                 onChange={(event) => {
                   handleChange(event, ElementNatureEdit.UserTitle);
                 }}
+                contentEditable={false}
                 style={{
                   padding: "10px",
                   borderColor: "red",

@@ -1,18 +1,31 @@
 import { GetServerSideProps } from "next";
 import { authProvider } from "src/utils/authProvider";
 import { IUser } from "../../../src/interfaces/users";
-import { GetListResponse } from "@refinedev/core";
+import { CanAccess, GetListResponse } from "@refinedev/core";
 import { parseTableParams } from "@refinedev/nextjs-router";
 import { axiosInstance, dataProvider } from "src/utils";
 import { API_URL } from "../../../src/constants/constants";
 import UserListCard from "@components/users/userListCard";
+import Link from "next/link";
 
 export const UsersList: React.FC<{ initialData: GetListResponse<IUser> }> = ({
   initialData,
 }) => {
   return (
     <div className={"p-4"}>
-      <h3 className={"text-2xl font-extrabold"}>User List</h3>
+      <div className={"flex justify-between"}>
+        <h3 className={"text-2xl font-extrabold"}>User List</h3>
+        <CanAccess action={"Create"} resource={"categories"}>
+          <Link
+            href={"/dashboard/users/create"}
+            className={
+              "bg-teal-600 px-4 py-2 rounded-lg text-white transition-all duration-500 hover:scale-105"
+            }
+          >
+            Create User
+          </Link>
+        </CanAccess>
+      </div>
       <div
         className={
           "grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  mt-4"

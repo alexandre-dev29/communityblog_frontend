@@ -1,25 +1,60 @@
-import { MuiEditInferencer } from "@refinedev/inferencer/mui";
-import { GetServerSideProps } from "next";
-import { authProvider } from "src/utils/authProvider";
+import { Form, Input } from "antd";
+import { Edit, useForm } from "@refinedev/antd";
+import { IResourceComponentsProps } from "@refinedev/core";
+import { ICategory } from "../../../../src/interfaces/categories";
 
-export default function CategoryEdit() {
-  return <MuiEditInferencer />;
-}
+const CategoryEdit: React.FC<IResourceComponentsProps> = () => {
+  const { formProps, saveButtonProps } = useForm<ICategory>();
+  return (
+    <Edit saveButtonProps={saveButtonProps}>
+      <Form {...formProps} layout="vertical">
+        <Form.Item
+          label="Category Name"
+          name="categoryName"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Category Slug"
+          name="categorySlug"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Category Image Url"
+          name="mainImageUrl"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
 
-export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
-  const { authenticated, redirectTo } = await authProvider.check(context);
-
-  if (!authenticated) {
-    return {
-      props: {},
-      redirect: {
-        destination: redirectTo,
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
+        <Form.Item
+          label="Category Description"
+          name="categoryDescription"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input.TextArea rows={4} placeholder="Category Description" />
+        </Form.Item>
+      </Form>
+    </Edit>
+  );
 };
+export default CategoryEdit;

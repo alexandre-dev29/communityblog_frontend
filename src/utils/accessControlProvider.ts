@@ -8,7 +8,6 @@ export const accessControlProvider: AccessControlProvider = {
       const parsedUser = JSON.parse(auth);
 
       if (resource == "categories" && parsedUser.role == "Editor") {
-        console.log(resource);
         return Promise.resolve({ can: false, reason: "Unauthorized" });
       }
       return Promise.resolve({ can: true });
