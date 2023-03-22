@@ -31,10 +31,7 @@ const NavBar = ({ sidebarWidth, navBarHeight }: NavSideBarProps) => {
           </div>
           <h2 className={"ml-4"}>{user?.fullName}</h2>
         </div>
-        <Avatar
-          alt="Remy Sharp"
-          src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
-        />
+        <Avatar alt={`${user?.fullName} avatar`} src={`${user?.avatarImage}`} />
       </div>
     </div>
   );

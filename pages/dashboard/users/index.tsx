@@ -58,8 +58,4 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
   return {
     props: { initialData: data },
   };
-
-  return {
-    props: {},
-  };
 };

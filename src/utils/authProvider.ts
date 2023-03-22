@@ -36,6 +36,7 @@ export const authProvider: AuthBindings = {
   },
   logout: async () => {
     nookies.destroy(null, "auth");
+    nookies.destroy(null, "token");
     return {
       success: true,
       redirectTo: "/login",
@@ -43,7 +44,7 @@ export const authProvider: AuthBindings = {
   },
   check: async (ctx: any) => {
     const cookies = nookies.get(ctx);
-    if (cookies["auth"]) {
+    if (cookies["auth"] && cookies["token"]) {
       return {
         authenticated: true,
       };
