@@ -114,8 +114,6 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     pagination,
     sorters,
   });
-  console.log(data);
-
   return {
     props: { initialData: data },
   };

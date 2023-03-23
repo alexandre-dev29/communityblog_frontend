@@ -20,8 +20,8 @@ const DashBoardPage = () => {
         <PieChart
           key={2}
           title={"Number Of Posts"}
-          value={550}
-          series={[60, 40]}
+          value={1}
+          series={[1, 30]}
           colors={["#475ae8", "#e4b8ef"]}
         />
         <PieChart

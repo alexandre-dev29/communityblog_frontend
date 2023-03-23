@@ -1,13 +1,38 @@
+import { useTable } from "@refinedev/antd";
+import { IPost } from "../../../src/interfaces/posts";
+import { CircularProgress } from "@mui/material";
+import PostCardForDashboard from "@components/dashboard/postCardForDashboard";
+import { API_URL } from "../../../src/constants/constants";
+import { authProvider, axiosInstance, dataProvider } from "../../../src/utils";
+import { parseTableParams } from "@refinedev/nextjs-router";
 import { GetServerSideProps } from "next";
-import { authProvider } from "src/utils/authProvider";
+import { GetListResponse } from "@refinedev/core";
 
-export default function ProductList() {
+const ProductList: React.FC<{ initialData: GetListResponse<IPost> }> = ({
+  initialData,
+}) => {
+  const {
+    tableQueryResult: { data, isLoading, isError },
+  } = useTable<IPost>({
+    queryOptions: { initialData: initialData },
+  });
+
+  const allPosts = data?.data ?? [];
+  if (isLoading) return <CircularProgress />;
+  if (isError) return <p>There was an error</p>;
   return (
-    <p className={"bg-myPrimary"} style={{ color: "var(--myPrimary)" }}>
-      Here is the posts
-    </p>
+    <div>
+      <h3 className={"text-2xl font-extrabold"}>Here are all your posts</h3>
+
+      <div className={"grid grid-cols-4 gap-8 p-8"}>
+        {allPosts.map((value) => (
+          <PostCardForDashboard postData={value} key={value.id} />
+        ))}
+      </div>
+    </div>
   );
-}
+};
+export default ProductList;
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
   const { authenticated, redirectTo } = await authProvider.check(context);
@@ -22,7 +47,22 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     };
   }
 
+  const { pagination, filters, sorters } = parseTableParams(
+    context.resolvedUrl?.split("?")[1] ?? ""
+  );
+
+  const data = await dataProvider(
+    API_URL,
+    axiosInstance,
+    context.req.headers.cookie
+  ).getList({
+    resource: "posts",
+    filters,
+    pagination,
+    sorters,
+  });
+
   return {
-    props: {},
+    props: { initialData: data },
   };
 };

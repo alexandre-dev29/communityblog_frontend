@@ -4,10 +4,11 @@ import { GetServerSideProps } from "next";
 import { authProvider, axiosInstance, dataProvider } from "../../../src/utils";
 import { GetOneResponse, useUpdate } from "@refinedev/core";
 import { IUser } from "../../../src/interfaces/users";
-import Image from "next/image";
 import { MailLockTwoTone, PhoneTwoTone } from "@mui/icons-material";
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
 import { CircularProgress } from "@mui/material";
+import { Image } from "antd";
+import PostCardForDashboard from "@components/dashboard/postCardForDashboard";
 
 enum ElementNatureEdit {
   Biography,
@@ -95,8 +96,8 @@ const ProfilePage: React.FC<{ initialData: GetOneResponse<IUser> }> = ({
               <Image
                 alt={`${fullName} avatar`}
                 src={`${avatarImage}`}
-                width={70}
-                height={70}
+                width={120}
+                height={120}
                 className={"rounded-full w-auto h-auto"}
               />
             </div>
@@ -179,7 +180,11 @@ const ProfilePage: React.FC<{ initialData: GetOneResponse<IUser> }> = ({
           Here are your posts
         </h5>
 
-        <div className={"p-8"}>sdfsd</div>
+        <div className={"grid grid-cols-4 gap-8 p-8"}>
+          {initialData.data.Posts.map((value) => (
+            <PostCardForDashboard postData={value} key={value.id} />
+          ))}
+        </div>
       </article>
     </div>
   );

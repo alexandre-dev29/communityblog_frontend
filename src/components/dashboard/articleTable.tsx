@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import { Image } from "antd";
 import Link from "next/link";
 import { Table } from "flowbite-react";
 
@@ -120,7 +120,7 @@ const ArticleTable = () => {
               </Table.Cell>
               <Table.Cell>
                 <div className={"flex items-center"}>
-                  <img
+                  <Image
                     src={value.articleImage}
                     alt={"unsplash images"}
                     className={"rounded-full shadow-lg  h-[40px] w-[40px]"}

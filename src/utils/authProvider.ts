@@ -36,7 +36,9 @@ export const authProvider: AuthBindings = {
   },
   logout: async () => {
     nookies.destroy(null, "auth");
-    nookies.destroy(null, "token");
+    const { data } = await httpClient.post<IAuthResponse>(
+      `${API_URL}/users/logoutUser`
+    );
     return {
       success: true,
       redirectTo: "/login",
@@ -44,7 +46,7 @@ export const authProvider: AuthBindings = {
   },
   check: async (ctx: any) => {
     const cookies = nookies.get(ctx);
-    if (cookies["auth"] && cookies["token"]) {
+    if (cookies["auth"] !== null && cookies["token"] !== null) {
       return {
         authenticated: true,
       };

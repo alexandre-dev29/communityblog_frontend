@@ -1,10 +1,21 @@
 import { Form, Input } from "antd";
 import { Edit, useForm } from "@refinedev/antd";
-import { IResourceComponentsProps } from "@refinedev/core";
+import { GetOneResponse } from "@refinedev/core";
 import { ICategory } from "../../../../src/interfaces/categories";
+import { GetServerSideProps } from "next";
+import { API_URL } from "../../../../src/constants/constants";
+import {
+  authProvider,
+  axiosInstance,
+  dataProvider,
+} from "../../../../src/utils";
 
-const CategoryEdit: React.FC<IResourceComponentsProps> = () => {
-  const { formProps, saveButtonProps } = useForm<ICategory>();
+const CategoryEdit: React.FC<{
+  initialData: GetOneResponse<ICategory>;
+}> = ({ initialData }) => {
+  const { formProps, saveButtonProps } = useForm<ICategory>({
+    queryOptions: { initialData: initialData },
+  });
   return (
     <Edit saveButtonProps={saveButtonProps}>
       <Form {...formProps} layout="vertical">
@@ -58,3 +69,32 @@ const CategoryEdit: React.FC<IResourceComponentsProps> = () => {
   );
 };
 export default CategoryEdit;
+
+export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
+  const { authenticated, redirectTo } = await authProvider.check(context);
+
+  if (!authenticated) {
+    return {
+      props: {},
+      redirect: {
+        destination: redirectTo,
+        permanent: false,
+      },
+    };
+  }
+
+  const data = await dataProvider(
+    API_URL,
+    axiosInstance,
+    context.req.headers.cookie
+  ).getOne({
+    resource: "categories",
+    id: context.params?.id as string,
+  });
+
+  return {
+    props: {
+      initialData: data,
+    },
+  };
+};

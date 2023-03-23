@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "flowbite-react";
 import { IUser } from "../../interfaces/users";
-import Image from "next/image";
+import { Image, Skeleton } from "antd";
 
 const UserListCard = ({ userInformation }: { userInformation: IUser }) => {
   const { fullName, email, avatarImage, biography, userTitle, role } =
@@ -20,8 +20,11 @@ const UserListCard = ({ userInformation }: { userInformation: IUser }) => {
           className=" rounded-full shadow-lg w-auto h-auto"
           src={`${avatarImage}`}
           alt={`${fullName} image`}
-          width={70}
-          height={70}
+          width={100}
+          height={100}
+          placeholder={
+            <Skeleton.Image active={true} className={"rounded-full"} />
+          }
         />
         <h5 className="text-xl font-bold text-gray-600 dark:text-white">
           {fullName}

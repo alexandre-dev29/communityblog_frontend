@@ -9,6 +9,7 @@ import "nprogress/nprogress.css";
 import Router from "next/router";
 import RefineConfig from "../config/refineConfig";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { Authenticated } from "@refinedev/core";
 
 const InterFont = Montserrat({
   subsets: ["latin"],
@@ -27,7 +28,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 
     return (
       <MyLayout>
-        <Component {...pageProps} />
+        <Authenticated v3LegacyAuthProviderCompatible={false}>
+          <Component {...pageProps} />
+        </Authenticated>
       </MyLayout>
     );
   };

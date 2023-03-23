@@ -1,5 +1,8 @@
 import React from "react";
 import { Box, Stack, Typography } from "@mui/material";
+import { useList } from "@refinedev/core";
+import { ICategory } from "../../interfaces/categories";
+import { Skeleton } from "antd";
 
 interface ProgressBarProps {
   title: string;
@@ -68,6 +71,15 @@ const ProgressBar = ({ percentage, title, color }: ProgressBarProps) => (
 );
 
 const PropertyReferals = () => {
+  const {
+    isLoading,
+    data: categories,
+    isError,
+  } = useList<ICategory>({
+    resource: "categories",
+  });
+  const generateRandomColor = (): string =>
+    `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   return (
     <Box
       p={4}
@@ -83,15 +95,24 @@ const PropertyReferals = () => {
       <Typography fontSize={18} fontWeight={600} color={"#11142d"}>
         Top Categories
       </Typography>
+
       <Stack my={"20px"} direction={"column"} gap={4}>
-        {propertyReferralsInfo.map(({ percentage, title, color }, index) => (
-          <ProgressBar
-            key={index}
-            title={title}
-            percentage={percentage}
-            color={color}
-          />
-        ))}
+        {!isLoading ? (
+          categories?.data.map(({ id, categoryName, posts }, index) => (
+            <ProgressBar
+              key={index}
+              title={categoryName}
+              percentage={posts.length}
+              color={generateRandomColor()}
+            />
+          ))
+        ) : (
+          <>
+            <Skeleton.Input active={isLoading} className={"w-full"} />
+            <Skeleton.Input active={isLoading} className={"w-full"} />
+            <Skeleton.Input active={isLoading} className={"w-full"} />
+          </>
+        )}
       </Stack>
     </Box>
   );
