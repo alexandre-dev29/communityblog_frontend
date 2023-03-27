@@ -19,7 +19,7 @@ const RefineConfig = ({ children }: { children: React.ReactNode }) => {
         <RefineSnackbarProvider>
           <Refine
             routerProvider={routerProvider}
-            dataProvider={dataProvider(API_URL)}
+            dataProvider={dataProvider(`${API_URL}`)}
             notificationProvider={notificationProvider}
             accessControlProvider={accessControlProvider}
             resources={resourceDatas}
