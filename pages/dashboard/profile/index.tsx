@@ -4,11 +4,12 @@ import { GetServerSideProps } from "next";
 import { authProvider, axiosInstance, dataProvider } from "../../../src/utils";
 import { GetOneResponse, useUpdate } from "@refinedev/core";
 import { IUser } from "../../../src/interfaces/users";
-import { MailLockTwoTone, PhoneTwoTone } from "@mui/icons-material";
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
 import { CircularProgress } from "@mui/material";
 import { Image } from "antd";
 import PostCardForDashboard from "@components/dashboard/postCardForDashboard";
+import { MailFilled } from "@ant-design/icons";
+import { PhoneIncome } from "iconoir-react";
 
 enum ElementNatureEdit {
   Biography,
@@ -139,11 +140,11 @@ const ProfilePage: React.FC<{ initialData: GetOneResponse<IUser> }> = ({
               />
               <div className={"flex gap-8"}>
                 <p className={"text-gray-400"}>
-                  <MailLockTwoTone className={"mr-4 text-myPrimary"} />
+                  <MailFilled className={"mr-4 text-myPrimary"} />
                   {email}
                 </p>
                 <div className={"flex items-center"}>
-                  <PhoneTwoTone className={"mr-4 text-myPrimary"} />
+                  <PhoneIncome className={"mr-4 text-myPrimary"} />
                   <ContentEditable
                     html={`${phoneNumberReference.current}`}
                     disabled={false}
@@ -211,6 +212,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     url: `${API_URL}/users/me`,
     method: "get",
   });
+  console.log(data);
 
   return {
     props: { initialData: data },

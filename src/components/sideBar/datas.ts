@@ -1,14 +1,10 @@
-import { HomeUser, UserCircle } from "iconoir-react";
-import {
-  ArticleTwoTone,
-  CategoryTwoTone,
-  DashboardCustomizeTwoTone,
-} from "@mui/icons-material";
+import { AlbumList, HomeUser, UserCircle } from "iconoir-react";
 import { sideBarItem } from "../../interfaces/uiTypes";
+import { DashboardOutlined, FileAddOutlined } from "@ant-design/icons";
 
 export const firstMenuList: sideBarItem[] = [
   {
-    IconElement: DashboardCustomizeTwoTone,
+    IconElement: DashboardOutlined,
     text: "Dashboard",
     link: "/dashboard",
   },
@@ -17,9 +13,9 @@ export const firstMenuList: sideBarItem[] = [
     text: "Users",
     link: "/dashboard/users",
   },
-  { IconElement: ArticleTwoTone, text: "Posts", link: "/dashboard/posts" },
+  { IconElement: AlbumList, text: "Posts", link: "/dashboard/posts" },
   {
-    IconElement: CategoryTwoTone,
+    IconElement: FileAddOutlined,
     text: "Categories",
     link: "/dashboard/categories",
   },

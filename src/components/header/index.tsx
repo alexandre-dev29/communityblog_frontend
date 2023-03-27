@@ -9,9 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 
-import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
-
 import { ColorModeContext } from "@contexts";
+import { HalfMoon, SunLight } from "iconoir-react";
 
 interface IUser {
   name: string;
@@ -38,7 +37,7 @@ export const Header: React.FC = () => {
               setMode();
             }}
           >
-            {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
+            {mode === "dark" ? <SunLight /> : <HalfMoon />}
           </IconButton>
           {showUserInfo && (
             <Stack direction="row" gap="16px" alignItems="center">

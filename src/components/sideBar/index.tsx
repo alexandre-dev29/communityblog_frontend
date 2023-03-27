@@ -3,10 +3,10 @@ import { firstMenuList } from "./datas";
 
 import { NavSideBarProps } from "../../interfaces/uiTypes";
 import { Tooltip } from "@mui/material";
-import { LogoutTwoTone } from "@mui/icons-material";
 import Link from "next/link";
 import { useAppSelectedMenuState } from "../../../states/mainStates";
 import { CanAccess, useLogout } from "@refinedev/core";
+import { LogoutOutlined } from "@ant-design/icons";
 
 export const Sidebar = ({ sidebarWidth, navBarHeight }: NavSideBarProps) => {
   const { menuSelected, setSelectedMenu } = useAppSelectedMenuState();
@@ -65,7 +65,7 @@ export const Sidebar = ({ sidebarWidth, navBarHeight }: NavSideBarProps) => {
                   className={"cursor-pointer mt-10"}
                   onClick={() => mutateLogout()}
                 >
-                  <LogoutTwoTone />
+                  <LogoutOutlined />
                 </li>
               </Tooltip>
             </ul>
