@@ -2669,11 +2669,6 @@ human-signals@^2.1.0:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
-iconoir-react@^6.4.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/iconoir-react/-/iconoir-react-6.4.0.tgz#12f4ce14f740c89baea8f58cd1255e7fa20ba9a4"
-  integrity sha512-I43T2a0ubdzDULjlOX9W9GQOG5AXh0r9l937AgNczLLljNDXCgWbqACQIDqSiIlzhxyh/dZ/L1ewlaAiiK6kGQ==
-
 iconv-lite@^0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
@@ -4479,6 +4474,11 @@ react-hook-form@^7.30.0:
   version "7.43.5"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.43.5.tgz#b320405594f1506d8d57b954383166d4ff563778"
   integrity sha512-YcaXhuFHoOPipu5pC7ckxrLrialiOcU91pKu8P+isAcXZyMgByUK9PkI9j5fENO4+6XU5PwWXRGMIFlk9u9UBQ==
+
+react-iconly@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/react-iconly/-/react-iconly-2.2.6.tgz#6c241fd04cf1f63dcb272bb406c24f5e0de21066"
+  integrity sha512-wpBXmfWbSnUPMf4VzDCZEhTPJaRwNO9YUjAGR3XWd0tEaZjw7pN9Hw1Zqo3IBnuetoPVXsYWn2IqI8tnvgmthQ==
 
 react-icons@^4.7.1:
   version "4.8.0"

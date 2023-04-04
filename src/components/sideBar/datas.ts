@@ -1,6 +1,6 @@
-import { AlbumList, HomeUser, UserCircle } from "iconoir-react";
 import { sideBarItem } from "../../interfaces/uiTypes";
 import { DashboardOutlined, FileAddOutlined } from "@ant-design/icons";
+import { Document, People, User } from "react-iconly";
 
 export const firstMenuList: sideBarItem[] = [
   {
@@ -9,15 +9,15 @@ export const firstMenuList: sideBarItem[] = [
     link: "/dashboard",
   },
   {
-    IconElement: HomeUser,
+    IconElement: People,
     text: "Users",
     link: "/dashboard/users",
   },
-  { IconElement: AlbumList, text: "Posts", link: "/dashboard/posts" },
+  { IconElement: Document, text: "Posts", link: "/dashboard/posts" },
   {
     IconElement: FileAddOutlined,
     text: "Categories",
     link: "/dashboard/categories",
   },
-  { IconElement: UserCircle, text: "Profile", link: "/dashboard/profile" },
+  { IconElement: User, text: "Profile", link: "/dashboard/profile" },
 ];

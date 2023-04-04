@@ -9,7 +9,7 @@ import { CircularProgress } from "@mui/material";
 import { Image } from "antd";
 import PostCardForDashboard from "@components/dashboard/postCardForDashboard";
 import { MailFilled } from "@ant-design/icons";
-import { PhoneIncome } from "iconoir-react";
+import { Calling } from "react-iconly";
 
 enum ElementNatureEdit {
   Biography,
@@ -144,7 +144,7 @@ const ProfilePage: React.FC<{ initialData: GetOneResponse<IUser> }> = ({
                   {email}
                 </p>
                 <div className={"flex items-center"}>
-                  <PhoneIncome className={"mr-4 text-myPrimary"} />
+                  <Calling set="bold" primaryColor="blueviolet" />
                   <ContentEditable
                     html={`${phoneNumberReference.current}`}
                     disabled={false}
@@ -182,7 +182,7 @@ const ProfilePage: React.FC<{ initialData: GetOneResponse<IUser> }> = ({
         </h5>
 
         <div className={"grid grid-cols-4 gap-8 p-8"}>
-          {initialData.data.Posts.map((value) => (
+          {initialData.data.Posts?.map((value) => (
             <PostCardForDashboard postData={value} key={value.id} />
           ))}
         </div>
