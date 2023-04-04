@@ -8,18 +8,34 @@ import {
 import { Card, Image, message, Popconfirm, Skeleton, Tooltip } from "antd";
 import { IPost } from "../../interfaces/posts";
 import Link from "next/link";
-
-const confirm = (e: any) => {
-  message.success("Click on Yes");
-};
+import { axiosInstance, dataProvider } from "../../utils";
+import { API_URL } from "../../constants/constants";
 
 const cancel = (e: any) => {
-  message.error("Click on No");
+  message.error("cancelled");
 };
 
 const { Meta } = Card;
 const PostCardForDashboard = ({ postData }: { postData: IPost }) => {
   const [isPublished, setIsPublished] = useState(postData.isPublished);
+  const confirm = async () => {
+    setIsPublished(!isPublished);
+    await axiosInstance.patch(`${API_URL}/posts/handle/setPublished`, {
+      id: postData.id,
+      isPublished: !isPublished,
+    });
+    message.success(
+      `Your post has been ${!isPublished ? "Published" : "UnPublished"}`
+    );
+  };
+  const confirmDelete = async () => {
+    await dataProvider(`${API_URL}`, axiosInstance).deleteOne({
+      resource: "posts",
+      id: postData.id,
+    });
+    message.success(`Your post has been deleted`);
+  };
+
   return (
     <Card
       hoverable={true}
@@ -35,7 +51,9 @@ const PostCardForDashboard = ({ postData }: { postData: IPost }) => {
         />
       }
       actions={[
-        <EditOutlined key="edit" />,
+        <Link href={`/dashboard/posts/edit/${postData.id}`}>
+          <EditOutlined key="edit" />
+        </Link>,
         isPublished ? (
           <Popconfirm
             title="UnPublish this post"
@@ -83,8 +101,19 @@ const PostCardForDashboard = ({ postData }: { postData: IPost }) => {
             </Tooltip>
           </Popconfirm>
         ),
-        <Link href={"/"}>Preview</Link>,
-        <DeleteOutlined key="delete" className={"text-red-600"} />,
+        <Link href={`/posts/${postData.postSlug}`} target={"_blank"}>
+          Preview
+        </Link>,
+        <Popconfirm
+          title="Delete this post"
+          description="Are you sure to delete this post?"
+          onConfirm={confirmDelete}
+          onCancel={cancel}
+          okText="Yes"
+          cancelText="No"
+        >
+          <DeleteOutlined key="delete" className={"text-red-600"} />
+        </Popconfirm>,
       ]}
     >
       <p className={"text-myPrimary text-center font-bold"}>
