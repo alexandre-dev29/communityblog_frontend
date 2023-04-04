@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./global.css";
+import "./markdown.css";
 import { AppPropsWithLayout } from "../src/types/types";
 import { Montserrat } from "next/font/google";
 import MyLayout from "@components/layouts/layout";

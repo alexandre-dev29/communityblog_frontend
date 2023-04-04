@@ -1,18 +1,26 @@
-import "@uiw/react-md-editor/markdown-editor.css";
-import "@uiw/react-markdown-preview/markdown.css";
-import "@uiw/react-markdown-preview/esm/styles/markdown.css";
-import dynamic from "next/dynamic";
 import { GetServerSideProps } from "next";
 import { authProvider } from "src/utils/authProvider";
 import { Create, useForm, useSelect } from "@refinedev/antd";
 import { ICategory } from "../../../../src/interfaces/categories";
 import { Form, Input, Select } from "antd";
 import { IPost } from "../../../../src/interfaces/posts";
+import ReactMde from "react-mde";
+import * as Showdown from "showdown";
+import { useState } from "react";
 
-const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false });
+const converter = new Showdown.Converter({
+  tables: true,
+  simplifiedAutoLink: true,
+  strikethrough: true,
+  tasklists: true,
+});
+
 export default function ProductCreate() {
   const { formProps, saveButtonProps, queryResult } = useForm<IPost>();
   const postData = queryResult?.data?.data;
+  const [selectedTab, setSelectedTab] = useState<
+    "preview" | "write" | undefined
+  >("write");
   const { selectProps: categorySelectProps } = useSelect<ICategory>({
     resource: "categories",
     defaultValue: postData?.Category?.id,
@@ -77,7 +85,18 @@ export default function ProductCreate() {
             },
           ]}
         >
-          <MDEditor data-color-mode="light" />
+          <ReactMde
+            selectedTab={selectedTab}
+            onTabChange={setSelectedTab}
+            generateMarkdownPreview={(markdown) =>
+              Promise.resolve(converter.makeHtml(markdown))
+            }
+            childProps={{
+              writeButton: {
+                tabIndex: -1,
+              },
+            }}
+          />
         </Form.Item>
       </Form>
     </Create>

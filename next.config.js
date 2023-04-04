@@ -1,6 +1,4 @@
 /** @type {import("next").NextConfig} */
-const removeImports = require("next-remove-imports")();
-
 const nextConfig = (module.exports = {
   experimental: {
     newNextLinkBehavior: true,
@@ -27,6 +25,6 @@ const nextConfig = (module.exports = {
       },
     ],
   },
+  staticPageGenerationTimeout: 15000,
 });
 module.exports = nextConfig;
-module.exports = removeImports();

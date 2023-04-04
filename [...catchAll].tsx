@@ -1,9 +1,8 @@
-import { ErrorComponent } from "@refinedev/mui";
 import { GetServerSideProps } from "next";
 import { authProvider } from "src/utils/authProvider";
 
 export default function CatchAll() {
-  return <ErrorComponent />;
+  return <h2>Error</h2>;
 }
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
