@@ -209,11 +209,9 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     axiosInstance,
     context.req.headers.cookie
   ).custom({
-    url: `${API_URL}/users/me`,
+    url: `${API_URL}/users/profile/me`,
     method: "get",
   });
-  console.log(data);
-
   return {
     props: { initialData: data },
   };
