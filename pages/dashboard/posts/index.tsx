@@ -66,10 +66,10 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     API_URL,
     axiosInstance,
     context.req.headers.cookie
-  ).getList({
-    resource: "posts",
+  ).custom({
+    url: `${API_URL}/posts/getPosts/allPosts`,
+    method: "get",
     filters,
-    pagination,
     sorters,
   });
 

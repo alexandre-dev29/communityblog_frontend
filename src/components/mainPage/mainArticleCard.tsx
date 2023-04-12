@@ -14,7 +14,7 @@ const MainArticleCard = ({ articleData }: { articleData: IPost }) => {
       <Link href={""}>
         <Image
           placeholder={
-            <Skeleton.Image active={true} className={"w-full min-h-[200px]"} />
+            <Skeleton.Image active={true} className={"w-full min-h-[300px]"} />
           }
           alt="post Image"
           src={articleData.postMainImage}

@@ -47,7 +47,7 @@ const FeaturedArticle = ({ featuredPost }: { featuredPost: IPost }) => {
       <div className={"col-start-8 col-end-12 w-full md:order-1 md:block"}>
         <Image
           placeholder={
-            <Skeleton.Image active={true} className={"w-full min-h-[200px]"} />
+            <Skeleton.Image active={true} className={"w-full min-h-[300px]"} />
           }
           alt="post Image"
           src={featuredPost.postMainImage}
