@@ -3,6 +3,8 @@ import { NavSideBarProps } from "../../interfaces/uiTypes";
 import { Avatar } from "@mui/material";
 import { useGetIdentity } from "@refinedev/core";
 import { IUser } from "../../interfaces/users";
+import { gdgLogo } from "src/assets";
+import Image from "next/image";
 
 const NavBar = ({ sidebarWidth, navBarHeight }: NavSideBarProps) => {
   const { data: user } = useGetIdentity<IUser>();
@@ -22,12 +24,14 @@ const NavBar = ({ sidebarWidth, navBarHeight }: NavSideBarProps) => {
           borderRight: "1px solid #D3DAE6",
         }}
       >
-        <AcmeLogo />
+        <Image src={gdgLogo} alt={"logo GDG"} width={50} height={50} />
       </div>
       <div className={"flex items-center px-8 justify-between w-full"}>
         <div className={"flex items-center"}>
           <div className={"pr-4 pb-2 pt-1 border-r-2"}>
-            <p className={"bg-teal-400 px-2 py-1 rounded-md"}>{user?.role}</p>
+            <p className={"bg-gdgYellow text-white px-2 py-1 rounded-md"}>
+              {user?.role}
+            </p>
           </div>
           <h2 className={"ml-4"}>{user?.fullName}</h2>
         </div>
@@ -37,7 +41,7 @@ const NavBar = ({ sidebarWidth, navBarHeight }: NavSideBarProps) => {
   );
 };
 
-const AcmeLogo = () => (
+export const AcmeLogo = () => (
   <svg
     className=""
     fill="none"

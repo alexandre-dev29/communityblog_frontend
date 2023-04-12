@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import { PieChartProps } from "../../interfaces/uiTypes";
 import dynamic from "next/dynamic";
+import myAllFonts from "../../../config/font";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
@@ -26,10 +27,20 @@ const PieChart = ({ title, series, value, colors }: PieChartProps) => {
       className={"transition-all duration-500 shadow-sm hover:shadow-md"}
     >
       <Stack direction={"column"}>
-        <Typography fontSize={14} color={"#808191"}>
+        <Typography
+          fontSize={14}
+          color={"#808191"}
+          className={myAllFonts.className}
+        >
           {title}
         </Typography>
-        <Typography fontSize={24} color={"#11142d"} fontWeight={700} mt={1}>
+        <Typography
+          fontSize={24}
+          color={"#11142d"}
+          fontWeight={700}
+          mt={1}
+          className={myAllFonts.className}
+        >
           {value}
         </Typography>
       </Stack>

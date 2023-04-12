@@ -9,6 +9,7 @@ module.exports = {
 
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx}",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
@@ -204,11 +205,32 @@ module.exports = {
         },
       }),
       colors: {
-        myPrimary: "rgb(16,129,232)",
+        myPrimary: "rgb(66,133,246)",
+        gdgBlue: "rgb(66,133,246)",
+        gdgYellow: "rgb(249,187,4)",
+        gdgRed: "rgb(234,66,53)",
+        gdgGreen: "rgb(16,157,88)",
+      },
+      animation: { blob: "blob 7s infinite" },
+      keyframes: {
+        blob: {
+          "0%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+          "33%": {
+            transform: "translate(30px, -50px) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(-20px, 20px) scale(0.9)",
+          },
+          "100%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+        },
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography"), require("flowbite/plugin")],
 
   darkMode: "class",
 };

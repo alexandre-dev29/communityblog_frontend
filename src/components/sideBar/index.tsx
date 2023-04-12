@@ -50,7 +50,7 @@ export const Sidebar = ({ sidebarWidth, navBarHeight }: NavSideBarProps) => {
                           <element.IconElement
                             className={`${
                               element.text == menuSelected
-                                ? "text-myPrimary scale-150"
+                                ? "text-gdgBlue scale-150"
                                 : ""
                             } transition-all duration-500`}
                           />

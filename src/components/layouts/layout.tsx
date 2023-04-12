@@ -1,15 +1,14 @@
 import React from "react";
-import { Oxygen } from "next/font/google";
 import NavBar from "@components/navBar";
 import Sidebar from "@components/sideBar";
+import myAllFonts from "../../../config/font";
 
-const oxygen = Oxygen({ weight: ["300", "400", "700"], subsets: ["latin"] });
 export const MyLayout = ({ children }: { children: React.ReactNode }) => {
   const sideBardWidth: number = 60;
   const navBarHeight: number = 8;
   return (
     <div
-      className={oxygen.className}
+      className={myAllFonts.className}
       style={{
         height: "100vh",
         width: "100%",

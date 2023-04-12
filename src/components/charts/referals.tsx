@@ -3,6 +3,7 @@ import { Box, Stack, Typography } from "@mui/material";
 import { useList } from "@refinedev/core";
 import { ICategory } from "../../interfaces/categories";
 import { Skeleton } from "antd";
+import myAllFonts from "../../../config/font";
 
 interface ProgressBarProps {
   title: string;
@@ -92,7 +93,12 @@ const PropertyReferals = () => {
       bgcolor={"#fff"}
       className={"transition-all duration-500 shadow-sm hover:shadow-md"}
     >
-      <Typography fontSize={18} fontWeight={600} color={"#11142d"}>
+      <Typography
+        fontSize={18}
+        fontWeight={600}
+        color={"#11142d"}
+        className={myAllFonts.className}
+      >
         Top Categories
       </Typography>
 
