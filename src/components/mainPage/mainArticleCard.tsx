@@ -21,8 +21,8 @@ const MainArticleCard = ({ articleData }: { articleData: IPost }) => {
           className={"rounded-t-2xl"}
         />
       </Link>
-      <div className={"flex grow flex-col p-6 "}>
-        <header className={""}>
+      <div className={"flex grow flex-col p-4 md:p-6 "}>
+        <header className={"flex flex-col gap-2"}>
           <Link
             href={`/category/${articleData.Category?.categorySlug}`}
             className={"text-gdgGreen font-bold block"}
@@ -31,11 +31,17 @@ const MainArticleCard = ({ articleData }: { articleData: IPost }) => {
           </Link>
           <Link
             href={`/post/${articleData.postSlug}`}
-            className={"text-[22px] font-bold leading-denser text-blue-900"}
+            className={
+              "text-lg md:text-[22px] font-bold leading-denser text-blue-900"
+            }
           >
             {articleData.postTitle}
           </Link>
-          <p className={"text-base font-book text-gray-9 line-clamp-3"}>
+          <p
+            className={
+              "text-sm md:text-base font-book text-gray-9 line-clamp-3"
+            }
+          >
             {articleData.postDescription}
           </p>
         </header>
@@ -51,11 +57,11 @@ const MainArticleCard = ({ articleData }: { articleData: IPost }) => {
                 />
               )}
             />
-            <p className={"font-bold text-gdgBlue "}>
+            <p className={"text-sm md:text-base font-bold text-gdgBlue "}>
               {articleData.author.fullName}
             </p>
           </div>
-          <p className={""}>{`${new Date(
+          <p className={"text-sm md:text-base"}>{`${new Date(
             `${articleData.publishedAt}`
           ).toLocaleDateString()}`}</p>
         </footer>

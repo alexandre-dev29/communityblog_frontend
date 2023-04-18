@@ -17,10 +17,10 @@ export const resourceDatas: ResourceProps[] | undefined = [
   },
   {
     name: "posts",
-    list: "/dashboard/posts",
-    create: "/dashboard/posts/create",
-    edit: "/dashboard/posts/edit/:id",
-    show: "/dashboard/posts/show/:id",
+    list: "/dashboard/post",
+    create: "/dashboard/post/create",
+    edit: "/dashboard/post/edit/:id",
+    show: "/dashboard/post/show/:id",
   },
   {
     name: "profile",

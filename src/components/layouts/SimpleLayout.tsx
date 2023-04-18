@@ -14,15 +14,13 @@ function NavBarSimple() {
 
   return (
     <nav
-      className={"absolute py-4 px-8  w-full flex justify-between items-center"}
+      className={
+        "py-2 px-4 md:px-8  w-full flex justify-between items-center bg-white"
+      }
     >
-      <Image
-        src={gdgLogo}
-        alt={"logo GDG"}
-        width={50}
-        height={50}
-        priority={true}
-      />
+      <div className={"relative w-[30px] h-[30px]"}>
+        <Image src={gdgLogo} alt={"logo GDG"} fill={true} priority={true} />
+      </div>
       {isLoading ? (
         <CircularProgress />
       ) : userData ? (
@@ -33,7 +31,7 @@ function NavBarSimple() {
               img={(props) => (
                 <img
                   referrerPolicy="no-referrer"
-                  className={"rounded-full w-[60px]"}
+                  className={"rounded-full w-[40px] md:w-[40px]"}
                   src={userData?.avatarImage}
                 />
               )}

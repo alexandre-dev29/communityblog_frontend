@@ -26,7 +26,7 @@ const ProductList: React.FC<{ initialData: GetListResponse<IPost> }> = ({
       <div className={"flex justify-between"}>
         <h3 className={"text-2xl font-extrabold"}>Here are all your posts</h3>
         <Link
-          href={"/dashboard/posts/create"}
+          href={"/dashboard/post/create"}
           className={
             "bg-myPrimary px-4 py-2 rounded-lg text-white transition-all duration-500 hover:scale-105"
           }

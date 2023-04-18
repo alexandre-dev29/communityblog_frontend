@@ -13,7 +13,7 @@ export const firstMenuList: sideBarItem[] = [
     text: "Users",
     link: "/dashboard/users",
   },
-  { IconElement: Document, text: "Posts", link: "/dashboard/posts" },
+  { IconElement: Document, text: "Posts", link: "/dashboard/post" },
   {
     IconElement: FileAddOutlined,
     text: "Categories",

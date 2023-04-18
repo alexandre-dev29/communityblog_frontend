@@ -28,17 +28,21 @@ export default function Home({
 
   return (
     <div className={"min-h-screen bg-gray-100  pb-28"}>
-      <section className={"bg-white h-[55vh] py-36 px-36"}>
+      <section
+        className={
+          "bg-white pb-8 px-6 md:py-12 md:px-12 lg:py-16 lg:px-16 xl:py-20 xl:px-28"
+        }
+      >
         <FeaturedArticle featuredPost={featuredArticle} />
       </section>
       <section
         className={
-          "w-3/4 mx-auto pt-8 pb-4 border-b-2  flex items-center gap-8  border-gray-300"
+          "w-11/12 xl:w-[85%] mx-auto pt-8 pb-4 border-b-2  flex items-center gap-2 md:gap-8  border-gray-300 overflow-hidden"
         }
       >
         {listofCategories.map((value, index) => (
           <p
-            className={`uppercase font-bold cursor-pointer hover:text-gdgGreen transition-all duration-500 ${
+            className={`text-[11px] md:text-lg uppercase font-bold cursor-pointer hover:text-gdgGreen transition-all duration-500 ${
               value === selectedCategory ? "text-gdgBlue" : "text-blue-900"
             }`}
             key={index}
@@ -58,10 +62,10 @@ export default function Home({
           </p>
         ))}
       </section>
-      <section className={"w-3/4 mx-auto mt-4"}>
+      <section className={"w-11/12 xl:w-[85%] mx-auto mt-4"}>
         <div
           className={
-            "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 lg:gap-x-16 md:gap-x-12"
+            "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-16 lg:gap-x-16 md:gap-x-12"
           }
         >
           {listOfArticles.length === 0 ? (
@@ -72,7 +76,7 @@ export default function Home({
             >
               <p
                 className={
-                  "p-16 flex gap-8 items-center text-4xl font-bold text-blue-900"
+                  "p-4 md:p-16 flex gap-8 items-center text-xl md:text-4xl font-bold text-blue-900"
                 }
               >
                 <ImFilesEmpty />
