@@ -9,21 +9,14 @@ trigger:
 pool:
   name: VpsPool
 steps:
-- task: CmdLine@2
-  inputs:
-    script: 'npm install'
-  displayName: "Install dependencies"
-- task: CmdLine@2
-  inputs:
-    script: 'npm run build'
-  displayName: "build the project"
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
+    includeRootFolder: false
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+    verbose: true
   displayName: "Archive the build"
 - task: PublishBuildArtifacts@1
   inputs:
