@@ -17,6 +17,7 @@ steps:
 
 - script: |
     npm install -g yarn
-    yarn install
-    yarn build
+    npm install
+    npm run build
+    dir
   displayName: 'npm install and build'
