@@ -75,7 +75,6 @@ const DashBoardPage = () => {
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
   const { authenticated, redirectTo } = await authProvider.check(context);
-
   if (!authenticated) {
     return {
       props: {},
@@ -100,7 +99,6 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     filters,
     sorters,
   });
-
   return {
     props: { initialData: data },
   };

@@ -122,7 +122,6 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     sorters,
   });
 
-  console.log(data, categories);
   return {
     props: { postsData: data, categoriesData: categories },
   };

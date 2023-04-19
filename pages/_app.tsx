@@ -9,7 +9,6 @@ import "nprogress/nprogress.css";
 import Router from "next/router";
 import RefineConfig from "../config/refineConfig";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { Authenticated } from "@refinedev/core";
 import SimpleLayout from "@components/layouts/SimpleLayout";
 import myAllFonts from "../config/font";
 
@@ -29,9 +28,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 
     return (
       <MyLayout>
-        <Authenticated v3LegacyAuthProviderCompatible={false}>
-          <Component {...pageProps} />
-        </Authenticated>
+        <Component {...pageProps} />
       </MyLayout>
     );
   };
