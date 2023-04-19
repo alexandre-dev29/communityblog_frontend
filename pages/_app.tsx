@@ -40,8 +40,8 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
     <div className={`${myAllFonts.className}`}>
       <NextThemesProvider
         attribute={"class"}
-        themes={["dark"]}
-        defaultTheme={"dark"}
+        themes={["light"]}
+        defaultTheme={"light"}
       >
         <RefineConfig>{renderComponent()}</RefineConfig>
       </NextThemesProvider>
