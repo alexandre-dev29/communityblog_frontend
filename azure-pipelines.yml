@@ -11,11 +11,11 @@ pool:
 steps:
 - task: CmdLine@2
   inputs:
-    script: 'yarn install'
+    script: 'npm install'
   displayName: "Install dependencies"
 - task: CmdLine@2
   inputs:
-    script: 'yarn build'
+    script: 'npm run build'
   displayName: "build the project"
 - task: ArchiveFiles@2
   inputs:
