@@ -11,8 +11,12 @@ pool:
 steps:
 - task: CmdLine@2
   inputs:
-    script: 'npm install'
+    script: 'yarn install'
   displayName: "Install dependencies"
+- task: CmdLine@2
+  inputs:
+    script: 'yarn build'
+  displayName: "build the project"
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
@@ -20,8 +24,10 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+  displayName: "Archive the build"
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+  displayName: "Publish artifact"
