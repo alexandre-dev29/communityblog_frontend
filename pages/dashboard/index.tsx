@@ -5,6 +5,10 @@ import { Box, Stack } from "@mui/material";
 import TotalRevenue from "@components/charts/TotalViews";
 import PropertyReferals from "@components/charts/referals";
 import ArticleTable from "@components/dashboard/articleTable";
+import { GetServerSideProps } from "next";
+import { authProvider, axiosInstance, dataProvider } from "../../src/utils";
+import { parseTableParams } from "@refinedev/nextjs-router";
+import { API_URL } from "../../src/constants/constants";
 
 const DashBoardPage = () => {
   return (
@@ -67,6 +71,39 @@ const DashBoardPage = () => {
       </Box>
     </div>
   );
+};
+
+export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
+  const { authenticated, redirectTo } = await authProvider.check(context);
+
+  if (!authenticated) {
+    return {
+      props: {},
+      redirect: {
+        destination: redirectTo,
+        permanent: false,
+      },
+    };
+  }
+
+  const { pagination, filters, sorters } = parseTableParams(
+    context.resolvedUrl?.split("?")[1] ?? ""
+  );
+
+  const data = await dataProvider(
+    API_URL,
+    axiosInstance,
+    context.req.headers.cookie
+  ).custom({
+    url: `${API_URL}/posts/getPosts/allPosts`,
+    method: "get",
+    filters,
+    sorters,
+  });
+
+  return {
+    props: { initialData: data },
+  };
 };
 
 export default DashBoardPage;

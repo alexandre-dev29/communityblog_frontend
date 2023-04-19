@@ -44,7 +44,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
   const currentPost = await dataProvider(
     API_URL,
     axiosInstance,
-    context.req.headers.cookie
+    context.req.headers.cookie === undefined ? "" : context.req.headers.cookie
   ).custom({
     url: `${API_URL}/posts/getPosts/getPostsBySlug`,
     method: "get",

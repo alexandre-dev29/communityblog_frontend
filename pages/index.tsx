@@ -103,17 +103,18 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
   const data = await dataProvider(
     API_URL,
     axiosInstance,
-    context.req.headers.cookie
+    context.req.headers.cookie === undefined ? "" : context.req.headers.cookie
   ).getList({
     resource: "posts",
     filters,
     pagination,
     sorters,
   });
+
   const categories = await dataProvider(
     API_URL,
     axiosInstance,
-    context.req.headers.cookie
+    context.req.headers.cookie === undefined ? "" : context.req.headers.cookie
   ).getList({
     resource: "categories",
     filters,
