@@ -8,22 +8,8 @@ trigger:
 
 pool:
   name: VpsPool
-
 steps:
-- task: NodeTool@0
+- task: CmdLine@2
   inputs:
-    versionSpec: '18.x'
-  displayName: 'Install Node.js'
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your commands here
-      
-      echo 'Hello world'
-- script: |
-    npm install -g yarn
-    npm install
-    npm run build
-    dir
-  displayName: 'npm install and build'
+    script: 'npm install'
+  displayName: "Install dependencies"
