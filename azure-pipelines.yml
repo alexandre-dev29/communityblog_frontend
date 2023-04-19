@@ -16,7 +16,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'npm run build'
-  displayName: "build the project
+  displayName: "build the project"
 
 - task: ArchiveFiles@2
   inputs:
