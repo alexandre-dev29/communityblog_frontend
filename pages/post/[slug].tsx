@@ -20,6 +20,7 @@ const components = {
   Head: Head,
   Link: Link,
   Image: Image,
+  img: (props: any) => <Image {...props} />,
 };
 
 interface IPostSlugPageData {
