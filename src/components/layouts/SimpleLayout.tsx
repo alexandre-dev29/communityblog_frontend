@@ -19,7 +19,9 @@ function NavBarSimple() {
       }
     >
       <div className={"relative w-[30px] h-[30px]"}>
-        <Image src={gdgLogo} alt={"logo GDG"} fill={true} priority={true} />
+        <Link href={"/"}>
+          <Image src={gdgLogo} alt={"logo GDG"} fill={true} priority={true} />
+        </Link>
       </div>
       {isLoading ? (
         <CircularProgress />

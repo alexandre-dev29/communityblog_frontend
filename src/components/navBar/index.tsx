@@ -5,6 +5,7 @@ import { useGetIdentity } from "@refinedev/core";
 import { IUser } from "../../interfaces/users";
 import { gdgLogo } from "src/assets";
 import Image from "next/image";
+import Link from "next/link";
 
 const NavBar = ({ sidebarWidth, navBarHeight }: NavSideBarProps) => {
   const { data: user } = useGetIdentity<IUser>();
@@ -24,7 +25,9 @@ const NavBar = ({ sidebarWidth, navBarHeight }: NavSideBarProps) => {
           borderRight: "1px solid #D3DAE6",
         }}
       >
-        <Image src={gdgLogo} alt={"logo GDG"} width={50} height={50} />
+        <Link href={"/"}>
+          <Image src={gdgLogo} alt={"logo GDG"} width={40} height={40} />
+        </Link>
       </div>
       <div className={"flex items-center px-8 justify-between w-full"}>
         <div className={"flex items-center"}>
@@ -40,24 +43,5 @@ const NavBar = ({ sidebarWidth, navBarHeight }: NavSideBarProps) => {
     </div>
   );
 };
-
-export const AcmeLogo = () => (
-  <svg
-    className=""
-    fill="none"
-    height="36"
-    viewBox="0 0 32 32"
-    width="36"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <rect fill="var(--secondary)" height="100%" rx="16" width="100%" />
-    <path
-      clipRule="evenodd"
-      d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
-      fill="currentColor"
-      fillRule="evenodd"
-    />
-  </svg>
-);
 
 export default NavBar;

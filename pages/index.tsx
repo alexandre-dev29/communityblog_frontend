@@ -9,6 +9,8 @@ import { ICategory } from "../src/interfaces/categories";
 import FeaturedArticle from "@components/mainPage/featuredArticle";
 import MainArticleCard from "@components/mainPage/mainArticleCard";
 import { ImFilesEmpty } from "react-icons/im";
+import nookies from "nookies";
+import { serialize } from "cookie";
 
 export default function Home({
   postsData,
@@ -99,6 +101,11 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
   const { pagination, filters, sorters } = parseTableParams(
     context.resolvedUrl?.split("?")[1] ?? ""
   );
+  nookies.set(context, "session-id", "aleasdasdxandre", {
+    maxAge: 3600,
+    path: "/",
+    sameSite: "none",
+  });
 
   const data = await dataProvider(
     API_URL,
@@ -110,6 +117,14 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     pagination,
     sorters,
   });
+  if (data.sessionId) {
+    const myCookie = serialize("session-id", data.sessionId, {
+      maxAge: 3600,
+      path: "/",
+      httpOnly: true,
+    });
+    context.res.setHeader("Set-Cookie", myCookie);
+  }
 
   const categories = await dataProvider(
     API_URL,

@@ -43,11 +43,21 @@ export const dataProvider = (
       { withCredentials: true, headers: { Cookie: cookies } }
     );
 
+    let sessionId = null;
+    let setCookieValue = headers["set-cookie"];
+    if (setCookieValue) {
+      const firstValues = setCookieValue[0].split(";")[0];
+      if (firstValues.includes("session-id")) {
+        sessionId = firstValues.split("=")[1];
+      }
+    }
+
     const total = +headers["x-total-count"];
 
     return {
       data,
       total: total || data.length,
+      sessionId: sessionId,
     };
   },
 
@@ -182,9 +192,18 @@ export const dataProvider = (
         });
         break;
     }
+    const { headers: myHeaders } = axiosResponse;
+    let sessionId = null;
+    let setCookieValue = myHeaders["set-cookie"];
+    if (setCookieValue) {
+      const firstValues = setCookieValue[0].split(";")[0];
+      if (firstValues.includes("session-id")) {
+        sessionId = firstValues.split("=")[1];
+      }
+    }
 
     const { data } = axiosResponse;
 
-    return Promise.resolve({ data });
+    return Promise.resolve({ data, sessionId: sessionId });
   },
 });

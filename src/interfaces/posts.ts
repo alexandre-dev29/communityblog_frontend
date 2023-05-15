@@ -10,6 +10,8 @@ export interface IPost {
   postDescription: string;
 
   postViewCount: number;
+  postTotalLikes: number;
+  postTotalShares: number;
 
   postSlug: string;
 

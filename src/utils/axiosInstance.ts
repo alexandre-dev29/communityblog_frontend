@@ -2,6 +2,7 @@ import { HttpError } from "@refinedev/core";
 import axios from "axios";
 
 const axiosInstance = axios.create({ withCredentials: true });
+axiosInstance.defaults.withCredentials = true;
 
 axiosInstance.interceptors.response.use(
   (response) => {

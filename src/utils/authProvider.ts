@@ -3,9 +3,9 @@ import nookies from "nookies";
 import { axiosInstance } from "./axiosInstance";
 import { API_URL } from "../constants/constants";
 import { IAuthResponse, ResponseTypeEnum } from "../interfaces/uiTypes";
+import { deleteCookie } from "cookies-next";
 
 const httpClient = axiosInstance;
-
 export const authProvider: AuthBindings = {
   login: async ({ email, password }) => {
     const { data } = await httpClient.post<IAuthResponse>(
@@ -25,7 +25,6 @@ export const authProvider: AuthBindings = {
         redirectTo: "/",
       };
     }
-
     return {
       success: false,
       error: {
@@ -35,7 +34,7 @@ export const authProvider: AuthBindings = {
     };
   },
   logout: async () => {
-    nookies.destroy(null, "auth");
+    deleteCookie("auth");
     const { data } = await httpClient.post<IAuthResponse>(
       `${API_URL}/users/logoutUser`
     );
@@ -51,7 +50,6 @@ export const authProvider: AuthBindings = {
         authenticated: true,
       };
     }
-
     return {
       authenticated: false,
       logout: true,

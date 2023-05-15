@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Users\AMwenze\AppData\Roaming\nvm\v16.13.1\node.exe C:\Users\AMwenze\AppData\Roaming\nvm\v16.13.1\node_modules\yarn\bin\yarn.js add rehypeHighlight rehype-accessible-emojis
+  C:\Users\AMwenze\AppData\Roaming\nvm\v16.13.1\node.exe C:\Users\AMwenze\AppData\Roaming\nvm\v16.13.1\node_modules\yarn\bin\yarn.js add cookie
 
 PATH: 
   C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Symantec\VIP Access Client\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Azure Data Studio\bin;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Sennheiser\SenncomSDK\;C:\Users\AMwenze\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files (x86)\Enterprise Vault\EVClient\x64\;C:\Program Files\PuTTY\;C:\Program Files\k6\;C:\Users\AMwenze\.cargo\bin;%PNPM_HOME%;C:\Users\AMwenze\AppData\Local\Microsoft\WindowsApps;C:\Users\AMwenze\AppData\Local\Programs\Git\cmd;C:\Users\AMwenze\AppData\Local\JetBrains\WebStorm 2021.3\bin;C:\Users\AMwenze\.dotnet\tools;C:\Users\AMwenze\AppData\Local\GitHubDesktop\bin;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\Scripts;C:\Users\AMwenze\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Java\jdk1.8.0_301\bin;C:\Users\AMwenze\AppData\Local\JetBrains\PyCharm 2021.1.1\bin;C:\Program Files\MongoDB\Server\5.0\bin;C:\Users\AMwenze\AppData\Local\Programs\Hyper\resources\bin;C:\Users\AMwenze\AppData\Local\JetBrains\IntelliJ IDEA 2021.2.3\bin;C:\Users\AMwenze\AppData\Roaming\nvm;C:\Users\AMwenze\AppData\Roaming\nvm\v16.13.1;C:\xampp\php;C:\Users\AMwenze\AppData\Local\ComposerSetup\bin;C:\Users\AMwenze\AppData\Roaming\Composer\vendor\bin;C:\flutter\bin;C:\Users\AMwenze\AppData\Local\JetBrains\Toolbox\scripts;C:\Users\AMwenze\AppData\Local\pnpm;C:\Users\AMwenze\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\Program Files\OpenSSL-Win64\bin;C:\Users\AMwenze\Projects\rust\vcpkg;;C:\Users\AMwenze\Projects\community_blog\frontend\node_modules\.bin
@@ -14,17 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/rehypeHighlight: Not found
-      at Request.params.callback [as _callback] (C:\Users\AMwenze\AppData\Roaming\nvm\v16.13.1\node_modules\yarn\lib\cli.js:66138:18)
-      at Request.self.callback (C:\Users\AMwenze\AppData\Roaming\nvm\v16.13.1\node_modules\yarn\lib\cli.js:140883:22)
-      at Request.emit (node:events:390:28)
-      at Request.<anonymous> (C:\Users\AMwenze\AppData\Roaming\nvm\v16.13.1\node_modules\yarn\lib\cli.js:141855:10)
-      at Request.emit (node:events:390:28)
-      at IncomingMessage.<anonymous> (C:\Users\AMwenze\AppData\Roaming\nvm\v16.13.1\node_modules\yarn\lib\cli.js:141777:12)
-      at Object.onceWrapper (node:events:509:28)
-      at IncomingMessage.emit (node:events:402:35)
-      at endReadableNT (node:internal/streams/readable:1343:12)
-      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+  Error: EPERM: operation not permitted, unlink 'C:\Users\AMwenze\Projects\community_blog\frontend\node_modules\flowbite-react\node_modules\.bin'
 
 npm manifest: 
   {
@@ -53,6 +43,7 @@ npm manifest:
       "@refinedev/simple-rest": "^4.0.0",
       "@tailwindcss/typography": "^0.5.9",
       "apexcharts": "^3.37.1",
+      "cookies-next": "^2.1.1",
       "flowbite": "^1.6.4",
       "flowbite-react": "^0.4.2",
       "gray-matter": "^4.0.3",
@@ -67,8 +58,10 @@ npm manifest:
       "react-dom": "^18.0.0",
       "react-iconly": "^2.2.6",
       "react-mde": "^11.5.0",
+      "rehype-accessible-emojis": "^0.3.2",
       "rehype-autolink-headings": "^6.1.1",
       "rehype-code-titles": "^1.2.0",
+      "rehype-highlight": "^6.0.0",
       "rehype-prism-plus": "^1.5.1",
       "rehype-slug": "^5.1.0",
       "remark-gfm": "^3.0.1",
@@ -1320,6 +1313,11 @@ Lockfile:
     dependencies:
       "@types/estree" "*"
   
+  "@types/cookie@^0.4.1":
+    version "0.4.1"
+    resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.4.1.tgz#bfd02c1f2224567676c1545199f87c3a861d878d"
+    integrity sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==
+  
   "@types/debug@^4.0.0":
     version "4.1.7"
     resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.7.tgz#7cc0ea761509124709b8b2d1090d8f6c17aadb82"
@@ -1372,6 +1370,11 @@ Lockfile:
     version "12.20.55"
     resolved "https://registry.yarnpkg.com/@types/node/-/node-12.20.55.tgz#c329cbd434c42164f846b909bd6f85b5537f6240"
     integrity sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==
+  
+  "@types/node@^16.10.2":
+    version "16.18.30"
+    resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.30.tgz#4a2c426370712a10c630a55ba086c55c17ca54e0"
+    integrity sha512-Kmp/wBZk19Dn7uRiol8kF8agnf8m0+TU9qIwyfPmXglVxMlmiIz0VQSMw5oFgwhmD2aKTlfBIO5FtsVj3y7hKQ==
   
   "@types/nprogress@^0.2.0":
     version "0.2.0"
@@ -2244,10 +2247,19 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/convert-to-spaces/-/convert-to-spaces-1.0.2.tgz#7e3e48bbe6d997b1417ddca2868204b4d3d85715"
     integrity sha512-cj09EBuObp9gZNQCzc7hByQyrs6jVGE+o9kSJmeUoj+GiPiJvi5LYqEH/Hmme4+MTLHM+Ejtq+FChpjjEnsPdQ==
   
-  cookie@^0.4.1:
+  cookie@^0.4.0, cookie@^0.4.1:
     version "0.4.2"
     resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.2.tgz#0e41f24de5ecf317947c82fc789e06a884824432"
     integrity sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==
+  
+  cookies-next@^2.1.1:
+    version "2.1.1"
+    resolved "https://registry.yarnpkg.com/cookies-next/-/cookies-next-2.1.1.tgz#8d82f1b78fccfb19d9d7c26766fa5707a3ec4695"
+    integrity sha512-AZGZPdL1hU3jCjN2UMJTGhLOYzNUN9Gm+v8BdptYIHUdwz397Et1p+sZRfvAl8pKnnmMdX2Pk9xDRKCGBum6GA==
+    dependencies:
+      "@types/cookie" "^0.4.1"
+      "@types/node" "^16.10.2"
+      cookie "^0.4.0"
   
   copy-anything@^3.0.2:
     version "3.0.3"
@@ -2664,6 +2676,13 @@ Lockfile:
     dependencies:
       reusify "^1.0.4"
   
+  fault@^2.0.0:
+    version "2.0.1"
+    resolved "https://registry.yarnpkg.com/fault/-/fault-2.0.1.tgz#d47ca9f37ca26e4bd38374a7c500b5a384755b6c"
+    integrity sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==
+    dependencies:
+      format "^0.2.0"
+  
   figlet@^1.5.2:
     version "1.5.2"
     resolved "https://registry.yarnpkg.com/figlet/-/figlet-1.5.2.tgz#dda34ff233c9a48e36fcff6741aeb5bafe49b634"
@@ -2776,6 +2795,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
     integrity sha512-7EwmXrOjyL+ChxMhmG5lnW9MPt1aIeZEwKhQzoBUdTV0N3zuwWDZYVJatDvZ2OyzPUvdIAZDsCetk3coyMfcnQ==
   
+  format@^0.2.0:
+    version "0.2.2"
+    resolved "https://registry.yarnpkg.com/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
+    integrity sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==
+  
   fraction.js@^4.2.0:
     version "4.2.0"
     resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.2.0.tgz#448e5109a313a3527f5a3ab2119ec4cf0e0e2950"
@@ -2811,6 +2835,11 @@ Lockfile:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
     integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
+  
+  gemoji@^4.2.1:
+    version "4.2.1"
+    resolved "https://registry.yarnpkg.com/gemoji/-/gemoji-4.2.1.tgz#88495f479a2e35a2c693e0ed321933372fc74c68"
+    integrity sha512-V9lUpRSn+KQGavZx8Pk+6mxG3kaz21ae2kTCXuT36KaRPNgYU8eHtj/RcUCNFVvmwppsYYz3nnNS9lmcP5kTsg==
   
   gensync@^1.0.0-beta.2:
     version "1.0.0-beta.2"
@@ -3001,6 +3030,11 @@ Lockfile:
     dependencies:
       "@types/hast" "^2.0.0"
   
+  hast-util-is-element@^1.0.3:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/hast-util-is-element/-/hast-util-is-element-1.1.0.tgz#3b3ed5159a2707c6137b48637fbfe068e175a425"
+    integrity sha512-oUmNua0bFbdrD/ELDSSEadRVtWZOf3iF6Lbv81naqsIV99RnSCieTbWuWCY8BAeEfKJTKl0gRdokv+dELutHGQ==
+  
   hast-util-is-element@^2.0.0:
     version "2.1.3"
     resolved "https://registry.yarnpkg.com/hast-util-is-element/-/hast-util-is-element-2.1.3.tgz#cd3279cfefb70da6d45496068f020742256fc471"
@@ -3044,6 +3078,16 @@ Lockfile:
     dependencies:
       "@types/hast" "^2.0.0"
   
+  hast-util-to-text@^3.0.0:
+    version "3.1.2"
+    resolved "https://registry.yarnpkg.com/hast-util-to-text/-/hast-util-to-text-3.1.2.tgz#ecf30c47141f41e91a5d32d0b1e1859fd2ac04f2"
+    integrity sha512-tcllLfp23dJJ+ju5wCCZHVpzsQQ43+moJbqVX3jNWPB7z/KFC4FyZD6R7y94cHL6MQ33YtMZL8Z0aIXXI4XFTw==
+    dependencies:
+      "@types/hast" "^2.0.0"
+      "@types/unist" "^2.0.0"
+      hast-util-is-element "^2.0.0"
+      unist-util-find-after "^4.0.0"
+  
   hast-util-whitespace@^2.0.0:
     version "2.0.1"
     resolved "https://registry.yarnpkg.com/hast-util-whitespace/-/hast-util-whitespace-2.0.1.tgz#0ec64e257e6fc216c7d14c8a1b74d27d650b4557"
@@ -3064,6 +3108,11 @@ Lockfile:
       hast-util-parse-selector "^3.0.0"
       property-information "^6.0.0"
       space-separated-tokens "^2.0.0"
+  
+  highlight.js@~11.7.0:
+    version "11.7.0"
+    resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-11.7.0.tgz#3ff0165bc843f8c9bce1fd89e2fda9143d24b11e"
+    integrity sha512-1rRqesRFhMO/PRF+G86evnyJkCgaZFOI+Z6kdj15TA18funfoqJXvgPCLSf0SWq3SRfg1j3HlDs8o4s3EGq1oQ==
   
   hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.1:
     version "3.3.2"
@@ -3675,6 +3724,15 @@ Lockfile:
     integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
     dependencies:
       js-tokens "^3.0.0 || ^4.0.0"
+  
+  lowlight@^2.0.0:
+    version "2.8.1"
+    resolved "https://registry.yarnpkg.com/lowlight/-/lowlight-2.8.1.tgz#5f54016ebd1b2f66b3d0b94d10ef6dd5df4f2e42"
+    integrity sha512-HCaGL61RKc1MYzEYn3rFoGkK0yslzCVDFJEanR19rc2L0mb8i58XM55jSRbzp9jcQrFzschPlwooC0vuNitk8Q==
+    dependencies:
+      "@types/hast" "^2.0.0"
+      fault "^2.0.0"
+      highlight.js "~11.7.0"
   
   lru-cache@^5.1.1:
     version "5.1.1"
@@ -5715,6 +5773,16 @@ Lockfile:
       extend-shallow "^3.0.2"
       safe-regex "^1.1.0"
   
+  rehype-accessible-emojis@^0.3.2:
+    version "0.3.2"
+    resolved "https://registry.yarnpkg.com/rehype-accessible-emojis/-/rehype-accessible-emojis-0.3.2.tgz#8a7179e3f423845f4aea9498f42069ae97d602f3"
+    integrity sha512-kChZo+EZsuFQYHUPu6kOZFjDrG7UtQdGxkrCvHBVo9ariKPL6S68QdPVxLxwcAtZSRZIXZhDuTJHgIM8KW24Qw==
+    dependencies:
+      emoji-regex "^8.0.0"
+      gemoji "^4.2.1"
+      hast-util-is-element "^1.0.3"
+      unist-util-flatmap "^1.0.0"
+  
   rehype-autolink-headings@^6.1.1:
     version "6.1.1"
     resolved "https://registry.yarnpkg.com/rehype-autolink-headings/-/rehype-autolink-headings-6.1.1.tgz#0cb874a56f3de6ead1c2268d7f0fc5006f244db5"
@@ -5735,6 +5803,17 @@ Lockfile:
     dependencies:
       hast "~1.0.0"
       unist-util-visit "~4.1.2"
+  
+  rehype-highlight@^6.0.0:
+    version "6.0.0"
+    resolved "https://registry.yarnpkg.com/rehype-highlight/-/rehype-highlight-6.0.0.tgz#8097219d8813b51f4c2b6d92db27dac6cbc9a641"
+    integrity sha512-q7UtlFicLhetp7K48ZgZiJgchYscMma7XjzX7t23bqEJF8m6/s+viXQEe4oHjrATTIZpX7RG8CKD7BlNZoh9gw==
+    dependencies:
+      "@types/hast" "^2.0.0"
+      hast-util-to-text "^3.0.0"
+      lowlight "^2.0.0"
+      unified "^10.0.0"
+      unist-util-visit "^4.0.0"
   
   rehype-parse@^8.0.2:
     version "8.0.4"
@@ -6628,6 +6707,19 @@ Lockfile:
       "@types/unist" "^2.0.0"
       unist-util-is "^5.0.0"
       unist-util-visit-parents "^5.0.0"
+  
+  unist-util-find-after@^4.0.0:
+    version "4.0.1"
+    resolved "https://registry.yarnpkg.com/unist-util-find-after/-/unist-util-find-after-4.0.1.tgz#80c69c92b0504033638ce11973f4135f2c822e2d"
+    integrity sha512-QO/PuPMm2ERxC6vFXEPtmAutOopy5PknD+Oq64gGwxKtk4xwo9Z97t9Av1obPmGU0IyTa6EKYUfTrK2QJS3Ozw==
+    dependencies:
+      "@types/unist" "^2.0.0"
+      unist-util-is "^5.0.0"
+  
+  unist-util-flatmap@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/unist-util-flatmap/-/unist-util-flatmap-1.0.0.tgz#f914ed6b36ff040afce938d848f379f88b94b448"
+    integrity sha512-IG32jcKJlhARCYT2LsYPJWdoXYkzz3ESAdl1aa2hn9Auh+cgUmU6wgkII4yCc/1GgeWibRdELdCZh/p3QKQ1dQ==
   
   unist-util-generated@^1.0.0:
     version "1.1.6"

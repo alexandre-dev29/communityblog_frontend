@@ -9,37 +9,64 @@ import { GetServerSideProps } from "next";
 import { authProvider, axiosInstance, dataProvider } from "../../src/utils";
 import { parseTableParams } from "@refinedev/nextjs-router";
 import { API_URL } from "../../src/constants/constants";
+import { GetListResponse } from "@refinedev/core";
+import { IPost } from "../../src/interfaces/posts";
 
-const DashBoardPage = () => {
+function TotalFollowers(props: {}) {
+  // const {
+  //   isLoading,
+  //   data: numberOfPosts,
+  //   isError,
+  // } = useList<IPost>({
+  //   resource: "posts",
+  // });
+  return (
+    <PieChart
+      title={"Number Of Followers"}
+      value={10}
+      series={[50, 10]}
+      colors={["#e4e8ef", "#475be8"]}
+    />
+  );
+}
+
+const DashBoardPage: React.FC<{ initialData: GetListResponse<IPost> }> = ({
+  initialData,
+}) => {
+  const totalLikes: number = initialData.data
+    .map((a) => a.postTotalLikes)
+    .reduce(
+      (previousValue, currentValue): number => previousValue + currentValue
+    );
+  const totalViews: number = initialData.data
+    .map((a) => a.postViewCount)
+    .reduce(
+      (previousValue, currentValue): number => previousValue + currentValue
+    );
+
   return (
     <div className={"p-8"}>
       <div className={"mt-4 flex flex-wrap gap-12"}>
-        <PieChart
-          key={1}
-          title={"Number Of Followers"}
-          value={100}
-          series={[75, 25]}
-          colors={["#475be8", "#e4e8ef"]}
-        />
+        <TotalFollowers key={1} />
         <PieChart
           key={2}
           title={"Number Of Posts"}
-          value={1}
-          series={[1, 30]}
+          value={initialData.data.length}
+          series={[initialData.data.length, 50]}
           colors={["#475ae8", "#e4b8ef"]}
         />
         <PieChart
           key={3}
           title={"Total Likes"}
-          value={5543}
-          series={[75, 25]}
+          value={totalLikes}
+          series={[totalLikes, 50]}
           colors={["#275be8", "#e5e8ef"]}
         />
         <PieChart
           key={4}
           title={"Total Viewers"}
-          value={555}
-          series={[75, 25]}
+          value={totalViews}
+          series={[totalViews, 50]}
           colors={["#475be8", "#e4e8ef"]}
         />
       </div>
@@ -67,7 +94,7 @@ const DashBoardPage = () => {
         minHeight={"110px"}
         className={"transition-all duration-500 shadow-sm hover:shadow-md "}
       >
-        <ArticleTable />
+        <ArticleTable allPosts={initialData.data} />
       </Box>
     </div>
   );

@@ -13,6 +13,8 @@ import { IPost } from "../../src/interfaces/posts";
 import Link from "next/link";
 import Head from "next/head";
 import { Image } from "antd";
+import cookie from "cookie";
+
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/atom-one-dark.css";
 
@@ -42,7 +44,7 @@ const PostSlug = ({ mdxSource, postData }: IPostSlugPageData) => {
 };
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
-  const currentPost = await dataProvider(
+  const currentPost: any = await dataProvider(
     API_URL,
     axiosInstance,
     context.req.headers.cookie === undefined ? "" : context.req.headers.cookie
@@ -51,6 +53,16 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     method: "get",
     query: { slug: `${context.params?.slug}` },
   });
+
+  console.log(currentPost);
+  if (currentPost.sessionId) {
+    const myCookie = cookie.serialize("session-id", currentPost.sessionId, {
+      maxAge: 3600,
+      path: "/",
+      httpOnly: true,
+    });
+    context.res.setHeader("Set-Cookie", myCookie);
+  }
   const { content, data } = matter(currentPost.data.postContent);
 
   const mdxSource = await serialize(content, {

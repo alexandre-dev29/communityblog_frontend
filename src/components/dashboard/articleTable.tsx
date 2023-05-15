@@ -2,82 +2,9 @@ import React from "react";
 import { Image } from "antd";
 import Link from "next/link";
 import { Table } from "flowbite-react";
+import { IPost } from "../../interfaces/posts";
 
-const ArticleTable = () => {
-  const datas: Array<{
-    articleTitle: string;
-    articleImage: string;
-    postDate: string;
-    category: string;
-    like: string;
-    shared: string;
-    viewers: string;
-    categoryColor: string;
-    articleSlug: string;
-  }> = [
-    {
-      like: "120K",
-      articleImage:
-        "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      shared: "100",
-      postDate: "07 janv 2021",
-      articleTitle: "Master Notifications With ChatGPT, React and NodeJS ",
-      category: "Flutter/Dart",
-      viewers: "200k",
-      categoryColor: "bg-teal-600",
-      articleSlug: "testinglink",
-    },
-    {
-      like: "120K",
-      articleImage:
-        "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1478&q=80",
-      shared: "100",
-      postDate: "07 janv 2021",
-      articleTitle:
-        "Creating a website aggregator with ChatGPT, React, and Node.js",
-      category: "Javascript",
-      viewers: "200k",
-      categoryColor: "bg-red-600",
-      articleSlug: "testinglink",
-    },
-    {
-      like: "120K",
-      articleImage:
-        "https://images.unsplash.com/photo-1547082299-de196ea013d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-      shared: "100",
-      postDate: "07 janv 2021",
-      articleTitle: "Creating a resume builder with React, NodeJS and AI ",
-      category: "Frontend ",
-      viewers: "200k",
-      categoryColor: "bg-green-700",
-      articleSlug: "testinglink",
-    },
-    {
-      like: "120K",
-      articleImage:
-        "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      shared: "100",
-      postDate: "07 janv 2021",
-      articleTitle:
-        "Build a notification system for a blog site with React, NodeJS and Novu ",
-      category: "Games",
-      viewers: "200k",
-      categoryColor: "bg-indigo-600",
-      articleSlug: "testinglink",
-    },
-    {
-      like: "120K",
-      articleImage:
-        "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-      shared: "100",
-      postDate: "07 janv 2021",
-      articleTitle: "Building a forum with React, NodeJS",
-      category: "Backend Dev",
-      viewers: "200k",
-      categoryColor: "bg-amber-500",
-      articleSlug: "testinglink",
-    },
-  ];
+const ArticleTable = ({ allPosts }: { allPosts: IPost[] }) => {
   return (
     <div className={"w-full pr-8"}>
       <h4 className={"font-extrabold text-gray-800 "}>Recent Article</h4>
@@ -93,16 +20,16 @@ const ArticleTable = () => {
           <Table.HeadCell>Viewers</Table.HeadCell>
         </Table.Head>
         <Table.Body className="divide-y">
-          {datas.map((value, index) => (
+          {allPosts.map((value, index) => (
             <Table.Row
               className="bg-white dark:border-gray-700 dark:bg-gray-800"
-              key={index}
+              key={value.id}
             >
               <Table.Cell className="!p-6 ">{index}</Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                 <div className={"col-span-3 flex items-center gap-4"}>
                   <Image
-                    src={value.articleImage}
+                    src={value.postMainImage}
                     alt={"unsplash images"}
                     width={60}
                     height={60}
@@ -110,29 +37,31 @@ const ArticleTable = () => {
                     style={{ width: "auto", height: "auto" }}
                   />
                   <Link
-                    href={`/article/${value.articleSlug}`}
+                    href={`/article/${value.postSlug}`}
                     className={"text-gray-500 font-bold"}
                     target={"_blank"}
                   >
-                    {value.articleTitle}
+                    {value.postTitle}
                   </Link>
                 </div>
               </Table.Cell>
               <Table.Cell>
                 <div className={"flex items-center"}>
                   <Image
-                    src={value.articleImage}
+                    src={value.author.avatarImage}
                     alt={"unsplash images"}
                     className={"rounded-full shadow-lg  h-[40px] w-[40px]"}
                   />
                   <p className={"ml-2 font-bold"}>Alexandre</p>
                 </div>
               </Table.Cell>
-              <Table.Cell>{value.postDate}</Table.Cell>
-              <Table.Cell>{value.category}</Table.Cell>
-              <Table.Cell>{value.like}</Table.Cell>
-              <Table.Cell>{value.shared}</Table.Cell>
-              <Table.Cell>{value.viewers}</Table.Cell>
+              <Table.Cell>{`${new Date(
+                value.publishedAt ?? Date.now()
+              ).toLocaleDateString("en-CA")}`}</Table.Cell>
+              <Table.Cell>{value.Category?.categoryName}</Table.Cell>
+              <Table.Cell>{value.postTotalLikes}</Table.Cell>
+              <Table.Cell>{value.postTotalShares}</Table.Cell>
+              <Table.Cell>{value.postViewCount}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
