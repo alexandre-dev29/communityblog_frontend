@@ -1,8 +1,7 @@
 import React from "react";
 import { firstMenuList } from "./datas";
-
 import { NavSideBarProps } from "../../interfaces/uiTypes";
-import { Tooltip } from "@mui/material";
+import { Tooltip } from "antd";
 import Link from "next/link";
 import { useAppSelectedMenuState } from "../../../states/mainStates";
 import { CanAccess, useLogout } from "@refinedev/core";
@@ -16,6 +15,7 @@ export const Sidebar = ({ sidebarWidth, navBarHeight }: NavSideBarProps) => {
       <aside
         className={`shadow-md bg-white z-40`}
         style={{
+          minHeight: "94vh",
           borderTop: "1px solid #D3DAE6",
           left: 0,
           top: "50px",

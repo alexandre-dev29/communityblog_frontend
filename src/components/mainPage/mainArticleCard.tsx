@@ -51,9 +51,12 @@ const MainArticleCard = ({ articleData }: { articleData: IPost }) => {
               rounded={true}
               img={(props) => (
                 <img
+                  width={"50px"}
+                  height={"50px"}
                   referrerPolicy="no-referrer"
                   className={"rounded-full w-[50px]"}
                   src={articleData.author?.avatarImage}
+                  alt={`${articleData.author?.fullName} profile image`}
                 />
               )}
             />

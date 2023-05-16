@@ -13,13 +13,6 @@ import { GetListResponse } from "@refinedev/core";
 import { IPost } from "../../src/interfaces/posts";
 
 function TotalFollowers(props: {}) {
-  // const {
-  //   isLoading,
-  //   data: numberOfPosts,
-  //   isError,
-  // } = useList<IPost>({
-  //   resource: "posts",
-  // });
   return (
     <PieChart
       title={"Number Of Followers"}

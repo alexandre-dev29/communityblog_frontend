@@ -1,7 +1,6 @@
 import React from "react";
 import { useGetIdentity, useIsAuthenticated, useLogout } from "@refinedev/core";
 import { Avatar, Dropdown } from "flowbite-react";
-import { CircularProgress } from "@mui/material";
 import Link from "next/link";
 import { IUser } from "../../interfaces/users";
 import { gdgLogo } from "src/assets";
@@ -24,7 +23,7 @@ function NavBarSimple() {
         </Link>
       </div>
       {isLoading ? (
-        <CircularProgress />
+        <p>loading</p>
       ) : userData ? (
         <Dropdown
           label={
@@ -35,6 +34,7 @@ function NavBarSimple() {
                   referrerPolicy="no-referrer"
                   className={"rounded-full w-[40px] md:w-[40px]"}
                   src={userData?.avatarImage}
+                  alt={`${userData?.fullName} profile image`}
                 />
               )}
             />

@@ -1,9 +1,9 @@
 import React from "react";
 import { NavSideBarProps } from "../../interfaces/uiTypes";
-import { Avatar } from "@mui/material";
 import { useGetIdentity } from "@refinedev/core";
 import { IUser } from "../../interfaces/users";
 import { gdgLogo } from "src/assets";
+import { Avatar } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 

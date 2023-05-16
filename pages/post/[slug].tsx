@@ -8,42 +8,41 @@ import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import { IPost } from "../../src/interfaces/posts";
-import Link from "next/link";
-import Head from "next/head";
-import { Image } from "antd";
+import { MDXRemote } from "next-mdx-remote";
+import { IPostSlugPageData } from "../../src/interfaces/posts";
 import cookie from "cookie";
-
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/atom-one-dark.css";
 
-const components = {
-  Head: Head,
-  Link: Link,
-  Image: Image,
-  img: (props: any) => <Image {...props} />,
-};
-
-interface IPostSlugPageData {
-  mdxSource: MDXRemoteSerializeResult<
-    Record<string, unknown>,
-    Record<string, unknown>
-  >;
-  postData: IPost;
-}
+import PostSlugHead from "@components/common/PostSlugHead";
+import mdxComponents from "@components/common/MdxComponents";
+import SeoData from "@components/common/SeoData";
+import React from "react";
 
 const PostSlug = ({ mdxSource, postData }: IPostSlugPageData) => {
   return (
-    <div className={"max-w-7xl px-8 py-4 mx-auto"}>
+    <div
+      className={"max-w-7xl px-2 md:px-12 lg:px-20 xl:px-24 mx-auto bg-white"}
+    >
+      <SeoData
+        isAPost={true}
+        siteDescription={""}
+        authorOfTheSite={"Axel Mwenze"}
+        postData={postData}
+      />
+      <PostSlugHead postData={postData} />
       <article className="prose dark:prose-dark">
-        <MDXRemote {...mdxSource} components={components} />
+        <MDXRemote {...mdxSource} components={mdxComponents} />
       </article>
     </div>
   );
 };
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
+  context.res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
   const currentPost: any = await dataProvider(
     API_URL,
     axiosInstance,
@@ -53,8 +52,6 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     method: "get",
     query: { slug: `${context.params?.slug}` },
   });
-
-  console.log(currentPost);
   if (currentPost.sessionId) {
     const myCookie = cookie.serialize("session-id", currentPost.sessionId, {
       maxAge: 3600,

@@ -1,5 +1,4 @@
 import React from "react";
-import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import { Refine } from "@refinedev/core";
 import routerProvider from "@refinedev/nextjs-router";
 import {
@@ -14,23 +13,20 @@ import { API_URL } from "../src/constants/constants";
 const RefineConfig = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
-      <RefineKbarProvider>
-        <Refine
-          routerProvider={routerProvider}
-          dataProvider={dataProvider(API_URL)}
-          notificationProvider={notificationProvider}
-          accessControlProvider={accessControlProvider}
-          resources={resourceDatas}
-          authProvider={authProvider}
-          options={{
-            syncWithLocation: true,
-            warnWhenUnsavedChanges: true,
-          }}
-        >
-          {children}
-          <RefineKbar />
-        </Refine>
-      </RefineKbarProvider>
+      <Refine
+        routerProvider={routerProvider}
+        dataProvider={dataProvider(API_URL)}
+        notificationProvider={notificationProvider}
+        accessControlProvider={accessControlProvider}
+        resources={resourceDatas}
+        authProvider={authProvider}
+        options={{
+          syncWithLocation: true,
+          warnWhenUnsavedChanges: true,
+        }}
+      >
+        {children}
+      </Refine>
     </div>
   );
 };
