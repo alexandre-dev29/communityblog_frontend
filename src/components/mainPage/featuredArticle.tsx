@@ -1,9 +1,15 @@
 import Link from "next/link";
 import { Avatar } from "flowbite-react";
-import { Image, Skeleton } from "antd";
+import Image from "next/image";
 import { IPost } from "../../interfaces/posts";
 
-const FeaturedArticle = ({ featuredPost }: { featuredPost: IPost }) => {
+const FeaturedArticle = ({
+  featuredPost,
+  blurImage,
+}: {
+  featuredPost: IPost;
+  blurImage: any;
+}) => {
   return (
     <article className={"grid grid-cols-12 items-center"}>
       <div
@@ -63,14 +69,15 @@ const FeaturedArticle = ({ featuredPost }: { featuredPost: IPost }) => {
         }
       >
         <Image
-          placeholder={
-            <Skeleton.Image active={true} className={"w-full min-h-[300px]"} />
-          }
-          width={500}
-          height={300}
-          alt="post Image"
+          width={800}
+          height={350}
+          priority={true}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          alt={`${featuredPost.postTitle} image`}
           src={featuredPost.postMainImage}
-          className={"rounded-2xl"}
+          placeholder={"blur"}
+          blurDataURL={blurImage}
+          className={"rounded-xl lg:rounded-2xl"}
         />
       </div>
     </article>

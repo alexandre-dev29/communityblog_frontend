@@ -3,14 +3,20 @@ import Link from "next/link";
 import { Avatar } from "flowbite-react";
 import ShareBar from "@components/common/ShareBar";
 import { IPost } from "../../interfaces/posts";
-import { Image } from "antd";
+import Image from "next/image";
 
-const PostSlugHead = ({ postData }: { postData: IPost }) => {
+const PostSlugHead = ({
+  postData,
+  imagePreview,
+}: {
+  postData: IPost;
+  imagePreview: any;
+}) => {
   return (
-    <div className={" flex flex-col gap-6 py-12"}>
+    <div className={" flex flex-col gap-6 py-2"}>
       <Link
         href={"/"}
-        className={"bg-gdgYellow w-fit px-4 py-2 rounded-full text-white "}
+        className={"bg-gdgYellow w-fit px-4 py-4 rounded-full text-white "}
       >
         {postData.Category?.categoryName}
       </Link>
@@ -30,6 +36,7 @@ const PostSlugHead = ({ postData }: { postData: IPost }) => {
                   className={"rounded-full w-[40px] md:w-[50px]"}
                   src={postData.author?.avatarImage}
                   alt={`${postData.author.fullName} profile`}
+                  width={"50px"}
                 />
               )}
             />
@@ -48,7 +55,18 @@ const PostSlugHead = ({ postData }: { postData: IPost }) => {
         <p>{`${postData.postReadTime} Min read`}</p>
       </div>
       <ShareBar postData={postData} />
-      <Image src={`${postData.postMainImage}`} className={"rounded-2xl"} />
+      <Image
+        src={`${postData.postMainImage}`}
+        className={"rounded-xl"}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        placeholder={"blur"}
+        style={{ objectFit: "cover" }}
+        quality={100}
+        height={600}
+        width={1400}
+        blurDataURL={imagePreview}
+        alt={`${postData.postTitle} image`}
+      />
     </div>
   );
 };

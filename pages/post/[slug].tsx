@@ -18,11 +18,16 @@ import PostSlugHead from "@components/common/PostSlugHead";
 import mdxComponents from "@components/common/MdxComponents";
 import SeoData from "@components/common/SeoData";
 import React from "react";
+import lqipModern from "lqip-modern";
 
-const PostSlug = ({ mdxSource, postData }: IPostSlugPageData) => {
+const PostSlug = ({
+  mdxSource,
+  postData,
+  mainImagePreview,
+}: IPostSlugPageData) => {
   return (
     <div
-      className={"max-w-7xl px-2 md:px-12 lg:px-20 xl:px-24 mx-auto bg-white"}
+      className={"max-w-7xl px-4 md:px-12 lg:px-20 xl:px-24 mx-auto bg-white"}
     >
       <SeoData
         isAPost={true}
@@ -30,7 +35,7 @@ const PostSlug = ({ mdxSource, postData }: IPostSlugPageData) => {
         authorOfTheSite={"Axel Mwenze"}
         postData={postData}
       />
-      <PostSlugHead postData={postData} />
+      <PostSlugHead postData={postData} imagePreview={mainImagePreview} />
       <article className="prose dark:prose-dark">
         <MDXRemote {...mdxSource} components={mdxComponents} />
       </article>
@@ -62,6 +67,10 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
   }
   const { content, data } = matter(currentPost.data.postContent);
 
+  const image = await fetch(currentPost.data.postMainImage);
+  const imageBuffer = Buffer.from(await image.arrayBuffer());
+  const previewImage = await lqipModern(imageBuffer);
+
   const mdxSource = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
@@ -88,6 +97,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     props: {
       mdxSource: mdxSource,
       postData: currentPost.data,
+      mainImagePreview: previewImage.metadata.dataURIBase64,
     },
   };
 };

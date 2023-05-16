@@ -12,15 +12,17 @@ import { ImFilesEmpty } from "react-icons/im";
 import nookies from "nookies";
 import { serialize } from "cookie";
 import SeoData from "@components/common/SeoData";
+import lqipModern from "lqip-modern";
 
 export default function Home({
   postsData,
   categoriesData,
+  featuredArticle,
 }: {
   postsData: GetListResponse<IPost>;
   categoriesData: GetListResponse<ICategory>;
+  featuredArticle: { data: IPost; blurImage: any };
 }) {
-  const featuredArticle = postsData.data.filter((value) => value.isFeatured)[0];
   const [selectedCategory, setSelectedCategory] =
     useState<string>("All Categories");
   const [listOfArticles, setListOfArticles] = useState<IPost[]>(postsData.data);
@@ -41,7 +43,10 @@ export default function Home({
           "bg-white pb-8 px-6 md:py-12 md:px-12 lg:py-16 lg:px-16 xl:py-20 xl:px-28"
         }
       >
-        <FeaturedArticle featuredPost={featuredArticle} />
+        <FeaturedArticle
+          featuredPost={featuredArticle.data}
+          blurImage={featuredArticle.blurImage}
+        />
       </section>
       <section
         className={
@@ -127,6 +132,12 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     pagination,
     sorters,
   });
+
+  const featuredPost = data.data.filter((value) => value.isFeatured)[0];
+  const image = await fetch(featuredPost.postMainImage);
+  const imageBuffer = Buffer.from(await image.arrayBuffer());
+  const previewImage = await lqipModern(imageBuffer);
+
   if (data.sessionId) {
     const myCookie = serialize("session-id", data.sessionId, {
       maxAge: 3600,
@@ -148,6 +159,13 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
   });
 
   return {
-    props: { postsData: data, categoriesData: categories },
+    props: {
+      postsData: data,
+      categoriesData: categories,
+      featuredArticle: {
+        data: featuredPost,
+        blurImage: previewImage.metadata.dataURIBase64,
+      },
+    },
   };
 };

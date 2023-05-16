@@ -19,7 +19,7 @@ function ShareBar({ postData }: { postData: IPost }) {
   return (
     <div
       className={
-        " flex border-t-2 border-b-2 border-slate-200 py-2 justify-end gap-4"
+        " flex border-t-2 border-b-2 border-slate-200 py-2 justify-around md:justify-end gap-4"
       }
     >
       <LinkedinShareButton

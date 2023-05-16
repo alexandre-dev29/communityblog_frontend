@@ -9,18 +9,7 @@ const nextConfig = (module.exports = {
   images: {
     remotePatterns: [
       {
-        port: "",
-        hostname: "images.unsplash.com",
-        protocol: "https",
-      },
-      {
-        port: "",
-        hostname: "cdn.sanity.io",
-        protocol: "https",
-      },
-      {
-        port: "",
-        hostname: "firebasestorage.googleapis.com",
+        hostname: "**",
         protocol: "https",
       },
     ],

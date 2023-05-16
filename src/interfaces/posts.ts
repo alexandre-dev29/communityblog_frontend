@@ -48,4 +48,5 @@ export interface IPostSlugPageData {
     Record<string, unknown>
   >;
   postData: IPost;
+  mainImagePreview: any;
 }
