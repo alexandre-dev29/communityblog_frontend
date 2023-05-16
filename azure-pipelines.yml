@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  name: VpsPool
+  name: MyVps
 steps:
 - task: CmdLine@2
   inputs:
