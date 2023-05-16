@@ -11,6 +11,7 @@ import MainArticleCard from "@components/mainPage/mainArticleCard";
 import { ImFilesEmpty } from "react-icons/im";
 import nookies from "nookies";
 import { serialize } from "cookie";
+import SeoData from "@components/common/SeoData";
 
 export default function Home({
   postsData,
@@ -30,6 +31,11 @@ export default function Home({
 
   return (
     <div className={"min-h-screen bg-gray-100  pb-28"}>
+      <SeoData
+        isAPost={false}
+        siteDescription={"This is the site of the community blog"}
+        authorOfTheSite={"Axel Mwenze"}
+      />
       <section
         className={
           "bg-white pb-8 px-6 md:py-12 md:px-12 lg:py-16 lg:px-16 xl:py-20 xl:px-28"
@@ -107,6 +113,10 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     sameSite: "none",
   });
 
+  context.res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
   const data = await dataProvider(
     API_URL,
     axiosInstance,

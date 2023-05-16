@@ -37,9 +37,12 @@ const FeaturedArticle = ({ featuredPost }: { featuredPost: IPost }) => {
             rounded={true}
             img={(props) => (
               <img
+                width={"50px"}
+                height={"50px"}
                 referrerPolicy="no-referrer"
                 className={"rounded-full w-[40px] md:w-[50px]"}
                 src={featuredPost.author?.avatarImage}
+                alt={`${featuredPost.author.fullName} profile image`}
               />
             )}
           />
@@ -63,6 +66,8 @@ const FeaturedArticle = ({ featuredPost }: { featuredPost: IPost }) => {
           placeholder={
             <Skeleton.Image active={true} className={"w-full min-h-[300px]"} />
           }
+          width={500}
+          height={300}
           alt="post Image"
           src={featuredPost.postMainImage}
           className={"rounded-2xl"}
