@@ -1,5 +1,4 @@
 import React from "react";
-import { Box, Stack, Typography } from "@mui/material";
 import { PieChartProps } from "../../interfaces/uiTypes";
 import dynamic from "next/dynamic";
 import myAllFonts from "../../../config/font";
@@ -10,40 +9,23 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
 
 const PieChart = ({ title, series, value, colors }: PieChartProps) => {
   return (
-    <Box
+    <div
       id={"chart"}
-      flex={1}
-      display={"flex"}
-      bgcolor={"#fcfcfc"}
-      flexDirection={"row"}
-      justifyContent={"space-between"}
-      alignItems={"center"}
-      pl={3.5}
-      py={3}
-      gap={2}
-      borderRadius={"15px"}
-      minHeight={"110px"}
-      width={"fit-content"}
-      className={"transition-all duration-500 shadow-sm hover:shadow-md"}
+      className={
+        "flex flex-1 bg-[#fcfcfc] justify-between items-center pl-6 py-4 gap-2 rounded-md min-h-[110px] w-fit transition-all duration-500 shadow-sm hover:shadow-md"
+      }
     >
-      <Stack direction={"column"}>
-        <Typography
-          fontSize={14}
-          color={"#808191"}
-          className={myAllFonts.className}
-        >
+      <div className={"flex flex-col"}>
+        <p className={`${myAllFonts.className} text-sm text-[#808191]`}>
           {title}
-        </Typography>
-        <Typography
-          fontSize={24}
-          color={"#11142d"}
-          fontWeight={700}
-          mt={1}
-          className={myAllFonts.className}
+        </p>
+
+        <p
+          className={`${myAllFonts.className} text-lg text-[#11142d] font-bold mt-2`}
         >
           {value}
-        </Typography>
-      </Stack>
+        </p>
+      </div>
       <ReactApexChart
         options={{
           chart: { type: "donut" },
@@ -55,7 +37,7 @@ const PieChart = ({ title, series, value, colors }: PieChartProps) => {
         type={"donut"}
         width={"120px"}
       />
-    </Box>
+    </div>
   );
 };
 

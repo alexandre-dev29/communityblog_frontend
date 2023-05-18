@@ -1,7 +1,6 @@
 import React from "react";
 
 import PieChart from "@components/charts/pieCharts";
-import { Box, Stack } from "@mui/material";
 import TotalRevenue from "@components/charts/TotalViews";
 import PropertyReferals from "@components/charts/referals";
 import ArticleTable from "@components/dashboard/articleTable";
@@ -38,8 +37,8 @@ const DashBoardPage: React.FC<{ initialData: GetListResponse<IPost> }> = ({
     );
 
   return (
-    <div className={"p-8"}>
-      <div className={"mt-4 flex flex-wrap gap-12"}>
+    <div className={"px-8 py-6"}>
+      <div className={"flex flex-wrap gap-12"}>
         <TotalFollowers key={1} />
         <PieChart
           key={2}
@@ -64,31 +63,18 @@ const DashBoardPage: React.FC<{ initialData: GetListResponse<IPost> }> = ({
         />
       </div>
 
-      <Stack
-        mt={"25px"}
-        width={"100%"}
-        direction={{ xs: "column", lg: "row" }}
-        gap={4}
-      >
+      <div className={"mt-[25px] w-full flex flex-col lg:flex-row gap-6"}>
         <TotalRevenue />
         <PropertyReferals />
-      </Stack>
-      <Box
+      </div>
+      <div
         id={"chart"}
-        flex={1}
-        display={"flex"}
-        bgcolor={"#fff"}
-        flexDirection={"row"}
-        pl={3.5}
-        py={3}
-        gap={2}
-        mt={4}
-        borderRadius={"15px"}
-        minHeight={"110px"}
-        className={"transition-all duration-500 shadow-sm hover:shadow-md "}
+        className={
+          "transition-all flex flex-1 bg-white pl-8 py-6 gap-2 mt-3 rounded-md min-h-[110px] duration-500 shadow-sm hover:shadow-md "
+        }
       >
         <ArticleTable allPosts={initialData.data} />
-      </Box>
+      </div>
     </div>
   );
 };

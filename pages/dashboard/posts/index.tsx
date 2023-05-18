@@ -1,6 +1,6 @@
 import { useTable } from "@refinedev/antd";
 import { IPost } from "../../../src/interfaces/posts";
-import { CircularProgress } from "@mui/material";
+import { Spin } from "antd";
 import PostCardForDashboard from "@components/dashboard/postCardForDashboard";
 import { API_URL } from "../../../src/constants/constants";
 import { authProvider, axiosInstance, dataProvider } from "../../../src/utils";
@@ -19,7 +19,7 @@ const ProductList: React.FC<{ initialData: GetListResponse<IPost> }> = ({
   });
 
   const allPosts = data?.data ?? [];
-  if (isLoading) return <CircularProgress />;
+  if (isLoading) return <Spin />;
   if (isError) return <p>There was an error</p>;
   return (
     <div>

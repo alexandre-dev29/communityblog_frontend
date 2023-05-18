@@ -12,12 +12,10 @@
     "refine": "refine"
   },
   "dependencies": {
-    "@mui/material": "^5.8.6",
     "@refinedev/antd": "^5.1.0",
     "@refinedev/cli": "^2.0.0",
     "@refinedev/core": "^4.0.0",
     "@refinedev/inferencer": "^3.0.0",
-    "@refinedev/mui": "^4.0.0",
     "@refinedev/nextjs-router": "^5.0.0",
     "@refinedev/react-hook-form": "^4.0.0",
     "@refinedev/simple-rest": "^4.0.0",

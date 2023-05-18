@@ -5,8 +5,7 @@ import { authProvider, axiosInstance, dataProvider } from "../../../src/utils";
 import { GetOneResponse, useUpdate } from "@refinedev/core";
 import { IUser } from "../../../src/interfaces/users";
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
-import { CircularProgress } from "@mui/material";
-import { Image } from "antd";
+import { Image, Spin } from "antd";
 import PostCardForDashboard from "@components/dashboard/postCardForDashboard";
 import { MailFilled } from "@ant-design/icons";
 import { Calling } from "react-iconly";
@@ -105,7 +104,7 @@ const ProfilePage: React.FC<{ initialData: GetOneResponse<IUser> }> = ({
 
             <div className={"absolute right-10 "}>
               {isLoading ? (
-                <CircularProgress />
+                <Spin />
               ) : (
                 <button
                   disabled={isDisabled}
