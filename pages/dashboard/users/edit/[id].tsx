@@ -1,9 +1,9 @@
-import { MuiEditInferencer } from "@refinedev/inferencer/mui";
+import { AntdEditInferencer } from "@refinedev/inferencer/antd";
 import { GetServerSideProps } from "next";
 import { authProvider } from "src/utils/authProvider";
 
 export default function ProductEdit() {
-  return <MuiEditInferencer />;
+  return <AntdEditInferencer />;
 }
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
