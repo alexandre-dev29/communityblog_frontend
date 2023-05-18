@@ -4,6 +4,7 @@ import { Avatar } from "flowbite-react";
 import ShareBar from "@components/common/ShareBar";
 import { IPost } from "../../interfaces/posts";
 import Image from "next/image";
+import CustomIMainImage from "@components/common/CustomImage";
 
 const PostSlugHead = ({
   postData,
@@ -31,12 +32,13 @@ const PostSlugHead = ({
             <Avatar
               rounded={true}
               img={(props) => (
-                <img
+                <Image
                   referrerPolicy="no-referrer"
                   className={"rounded-full w-[40px] md:w-[50px]"}
-                  src={postData.author?.avatarImage}
+                  src={`${postData.author?.avatarImage}`}
                   alt={`${postData.author.fullName} profile`}
-                  width={"50px"}
+                  width={50}
+                  height={50}
                 />
               )}
             />
@@ -55,17 +57,14 @@ const PostSlugHead = ({
         <p>{`${postData.postReadTime} Min read`}</p>
       </div>
       <ShareBar postData={postData} />
-      <Image
-        src={`${postData.postMainImage}`}
-        className={"rounded-xl"}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        placeholder={"blur"}
-        style={{ objectFit: "cover" }}
-        quality={100}
-        height={600}
-        width={1400}
-        blurDataURL={imagePreview}
-        alt={`${postData.postTitle} image`}
+      <CustomIMainImage
+        postTitle={postData.postTitle}
+        postImageSrc={postData.postMainImage}
+        blurImage={imagePreview}
+        hasBlurImage={true}
+        customClassName={"rounded-xl lg:rounded-2xl"}
+        customWidth={1400}
+        customHeight={600}
       />
     </div>
   );

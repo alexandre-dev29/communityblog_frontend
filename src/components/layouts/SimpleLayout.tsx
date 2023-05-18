@@ -30,10 +30,12 @@ function NavBarSimple() {
             <Avatar
               rounded={true}
               img={(props) => (
-                <img
+                <Image
+                  width={40}
+                  height={40}
                   referrerPolicy="no-referrer"
-                  className={"rounded-full w-[40px] md:w-[40px]"}
-                  src={userData?.avatarImage}
+                  className={"rounded-full "}
+                  src={`${userData?.avatarImage}`}
                   alt={`${userData?.fullName} profile image`}
                 />
               )}

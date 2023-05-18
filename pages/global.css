@@ -10,6 +10,14 @@ body {
     background-color: rgb(16, 129, 232);
 }
 
+#main-preview:hover > #text-preview {
+    display: block !important;
+}
+
+.ant-modal-content {
+    padding: 0 !important;
+}
+
 @layer utilities {
     .animation-delay-2000 {
         animation-delay: 2s;

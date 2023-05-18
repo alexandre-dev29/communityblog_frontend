@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Avatar } from "flowbite-react";
 import Image from "next/image";
 import { IPost } from "../../interfaces/posts";
+import CustomIMainImage from "@components/common/CustomImage";
 
 const FeaturedArticle = ({
   featuredPost,
@@ -42,12 +43,12 @@ const FeaturedArticle = ({
           <Avatar
             rounded={true}
             img={(props) => (
-              <img
-                width={"50px"}
-                height={"50px"}
+              <Image
+                width={50}
+                height={50}
                 referrerPolicy="no-referrer"
                 className={"rounded-full w-[40px] md:w-[50px]"}
-                src={featuredPost.author?.avatarImage}
+                src={`${featuredPost.author?.avatarImage}`}
                 alt={`${featuredPost.author.fullName} profile image`}
               />
             )}
@@ -68,16 +69,12 @@ const FeaturedArticle = ({
           "col-span-12 md:col-start-8 md:col-end-12 w-full md:order-2 md:block"
         }
       >
-        <Image
-          width={800}
-          height={350}
-          priority={true}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          alt={`${featuredPost.postTitle} image`}
-          src={featuredPost.postMainImage}
-          placeholder={"blur"}
-          blurDataURL={blurImage}
-          className={"rounded-xl lg:rounded-2xl"}
+        <CustomIMainImage
+          postTitle={featuredPost.postTitle}
+          postImageSrc={featuredPost.postMainImage}
+          blurImage={blurImage}
+          hasBlurImage={true}
+          customClassName={"rounded-xl lg:rounded-2xl"}
         />
       </div>
     </article>

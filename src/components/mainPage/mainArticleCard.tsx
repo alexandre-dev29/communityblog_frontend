@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { Image, Skeleton } from "antd";
 import { Avatar } from "flowbite-react";
 import { IPost } from "../../interfaces/posts";
+import CustomIMainImage from "@components/common/CustomImage";
 
 const MainArticleCard = ({ articleData }: { articleData: IPost }) => {
   return (
@@ -11,16 +11,14 @@ const MainArticleCard = ({ articleData }: { articleData: IPost }) => {
         "flex flex-col bg-white border-2 border-gray-200 shadow-sm transition-all duration-500 hover:shadow-md rounded-t-2xl"
       }
     >
-      <Link href={""}>
-        <Image
-          placeholder={
-            <Skeleton.Image active={true} className={"w-full min-h-[300px]"} />
-          }
-          alt="post Image"
-          src={articleData.postMainImage}
-          className={"rounded-t-2xl"}
-        />
-      </Link>
+      <CustomIMainImage
+        postTitle={articleData.postTitle}
+        postImageSrc={articleData.postMainImage}
+        hasBlurImage={false}
+        customHeight={500}
+        customWidth={1200}
+        customClassName={"rounded-t-2xl"}
+      />
       <div className={"flex grow flex-col p-4 md:p-6 "}>
         <header className={"flex flex-col gap-2"}>
           <Link
